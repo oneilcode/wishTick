@@ -1,0 +1,1 @@
+export { WishCard } from './WishCard'
