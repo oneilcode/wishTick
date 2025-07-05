@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: stretch;
     gap: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .main {
