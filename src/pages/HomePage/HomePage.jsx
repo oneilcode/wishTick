@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { WishCard } from '../../components/WishCard';
 import cls from './HomePage.module.css';
 import { Loader } from '../../components/Loader';
+import { SearchInput } from '../../components/SearchInput';
 
 const WISHES_URL = "http://localhost:8801"
 
 export const HomePage = () => {
   const [wishes, setWishes] = useState([])
   const [isLoading, setLoading] = useState(false)
+
 
   const getWishesCards = async () => {
     try {
@@ -33,7 +35,9 @@ export const HomePage = () => {
   return (
     <> 
       {isLoading && <Loader />}
-      
+
+      <SearchInput />
+    
       <div className={cls.wishesWrapper}>
         {
           wishes.map((wish, index) => {
