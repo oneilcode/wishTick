@@ -24,14 +24,13 @@ export const HomePage = () => {
     getWishesCards()
   }, [])
 
-
   return (
-    <>
+    <div className={cls.wishesWrapper}>
       {
         wishes.map((wish, index) => {
           return <WishCard key={index} wish={wish}/>
         })
       }    
-    </>
+    </div>
   );
 };

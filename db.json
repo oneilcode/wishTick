@@ -2,7 +2,7 @@
     "wishes": [
         {
             "id": "1",
-            "wish": "Хочу на море",
+            "wish": "Хочу на море ",
             "description": "хочу на море в августе со своими друзьями! Будет весело!",
             "img": "https://img.freepik.com/premium-photo/scenic-view-sea-against-blue-sky_1048944-12445648.jpg?semt=ais_hybrid&w=740",
             "completed": false,
