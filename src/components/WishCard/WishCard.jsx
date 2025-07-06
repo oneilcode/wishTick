@@ -7,8 +7,8 @@ export const WishCard = ({wish}) => {
 
   return (
     <div className={cls.card}>
-      <div className={cls.cardLabel}>
-        <span>{wish.completed ? "исполнилось" : "жду"}</span>
+      <div className={cls.cardLabelWrapper}>
+        <span className={`${cls.cardLabel} ${wish.completed ? cls.done : cls.undone}`} >{wish.completed ? "исполнилось :)" : "жду :|"}</span>
       </div>
       <h5 className={cls.cardTitle}>{wish.wish}</h5>
       <img className={cls.cardImage} src={wish.img} alt="wish image" />
