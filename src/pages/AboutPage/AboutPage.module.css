@@ -1,0 +1,11 @@
+.aboutTitle {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.aboutList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;   
+}

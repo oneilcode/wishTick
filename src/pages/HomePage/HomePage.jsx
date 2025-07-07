@@ -4,10 +4,13 @@ import { Loader } from '../../components/Loader';
 import { SearchInput } from '../../components/SearchInput';
 import { WishCardList } from '../../components/WishCardList';
 import { SelectWishCards } from '../../components/SelectWishCards';
+import { Button } from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const WISHES_URL = "http://localhost:8801"
 
 export const HomePage = () => {
+  const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState("")
   const [wishes, setWishes] = useState([])
@@ -50,8 +53,19 @@ export const HomePage = () => {
       {isLoading && <Loader />}
   
       <div className={cls.searchWrapper}>
+        <div>
         <SearchInput value={searchValue} onChange={onSearchChangeHandler}/> 
+        </div>
+
+        <div>
         <SelectWishCards value={sortSelectValue} onChange={onSortSelectHandler}/> 
+        </div>
+        
+        
+
+        <div>
+          <Button onClick={() => navigate("/addwish")}>Добавить</Button>
+        </div>
       </div>
 
       {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}

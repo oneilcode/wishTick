@@ -1,9 +1,11 @@
 .btn {
+  height: 40px;
   border: 1px solid transparent;
-  padding: 10px 20px;
+  padding: 0 20px;
   transition: 0.25s;
   border-radius: 8px;
   cursor: pointer;
+  background: #F6F6f6;
   &:hover,
   &:focus {
     border-color: #ca9f10;
