@@ -3,6 +3,7 @@ import cls from './HomePage.module.css';
 import { Loader } from '../../components/Loader';
 import { SearchInput } from '../../components/SearchInput';
 import { WishCardList } from '../../components/WishCardList';
+import { SelectWishCards } from '../../components/SelectWishCards';
 
 const WISHES_URL = "http://localhost:8801"
 
@@ -11,13 +12,14 @@ export const HomePage = () => {
   const [searchValue, setSearchValue] = useState("")
   const [wishes, setWishes] = useState([])
   const [isLoading, setLoading] = useState(false)
+  const [sortSelectValue, setSortSelectValue] = useState("")
 
-  const getWishesCards = async () => {
+  const getWishesCards = async (url) => {
     try {
       setLoading(true)
 
       await new Promise((res) => setTimeout(res, 2000))
-      const response = await fetch(`${WISHES_URL}/wishes`)
+      const response = await fetch(`${WISHES_URL}/${url}`)
       const wishes = await response.json()
 
       setWishes(wishes)
@@ -32,25 +34,27 @@ export const HomePage = () => {
   const cards = wishes.filter((el) => el.wish.toLowerCase().includes(searchValue.trim().toLowerCase()))
 
   const onSearchChangeHandler = (e) => {
-    console.log('e.target.value');
-    
     setSearchValue(e.target.value)
   }
 
+  const onSortSelectHandler = (e) => {
+    setSortSelectValue(e.target.value)
+  }
+
   useEffect(() => {
-    getWishesCards()
-  }, [])
+    getWishesCards(`wishes?${sortSelectValue}`)
+  }, [sortSelectValue])
 
   return (
     <> 
       {isLoading && <Loader />}
-
-     
-      <div className={cls.searchInput}>
-        <SearchInput value={searchValue} onChange={onSearchChangeHandler}/>
+  
+      <div className={cls.searchWrapper}>
+        <SearchInput value={searchValue} onChange={onSearchChangeHandler}/> 
+        <SelectWishCards value={sortSelectValue} onChange={onSortSelectHandler}/> 
       </div>
 
-      {cards.length === 0 && <p>Нет элементво</p>}
+      {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
     
       <WishCardList cards={cards}/>
     </>
