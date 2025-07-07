@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { WishCard } from '../../components/WishCard';
 import cls from './HomePage.module.css';
 import { Loader } from '../../components/Loader';
 import { SearchInput } from '../../components/SearchInput';
+import { WishCardList } from '../../components/WishCardList';
 
 const WISHES_URL = "http://localhost:8801"
 
 export const HomePage = () => {
+
+  const [searchValue, setSearchValue] = useState("")
   const [wishes, setWishes] = useState([])
   const [isLoading, setLoading] = useState(false)
-
 
   const getWishesCards = async () => {
     try {
@@ -28,6 +29,14 @@ export const HomePage = () => {
     }
   }
 
+  const cards = wishes.filter((el) => el.wish.toLowerCase().includes(searchValue.trim().toLowerCase()))
+
+  const onSearchChangeHandler = (e) => {
+    console.log('e.target.value');
+    
+    setSearchValue(e.target.value)
+  }
+
   useEffect(() => {
     getWishesCards()
   }, [])
@@ -36,15 +45,14 @@ export const HomePage = () => {
     <> 
       {isLoading && <Loader />}
 
-      <SearchInput />
-    
-      <div className={cls.wishesWrapper}>
-        {
-          wishes.map((wish, index) => {
-            return <WishCard key={index} wish={wish}/>
-          })
-        }    
+     
+      <div className={cls.searchInput}>
+        <SearchInput value={searchValue} onChange={onSearchChangeHandler}/>
       </div>
+
+      {cards.length === 0 && <p>Нет элементво</p>}
+    
+      <WishCardList cards={cards}/>
     </>
   );
 };

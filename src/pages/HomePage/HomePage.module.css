@@ -1,8 +1,6 @@
-.wishesWrapper {
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0;
+.searchInput{
+    width:  100%;
+    margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+    align-items: center;
+  }
