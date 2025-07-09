@@ -5,15 +5,6 @@ import { useEffect, useState } from 'react';
 
 const WISHES_URL = "http://localhost:8801"
 
-const card = {
-  id: "1",
-  wish: "Поехать на море",
-  description: "Хочу на море в августе со своими друзьями! Будет весело!",
-  img: "https://img.freepik.com/premium-photo/scenic-view-sea-against-blue-sky_1048944-12445648.jpg?semt=ais_hybrid&w=740",
-  completed: false,
-  editDate: "01.01.2025"
-}
-
 export const DetailedWishPage = () => {
   const navigate = useNavigate();
   const params = useParams()
