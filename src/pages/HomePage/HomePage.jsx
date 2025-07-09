@@ -4,7 +4,7 @@ import { Loader } from '../../components/Loader';
 import { SearchInput } from '../../components/SearchInput';
 import { WishCardList } from '../../components/WishCardList';
 import { SelectWishCards } from '../../components/SelectWishCards';
-import { Button } from '../../components/Button/Button';
+import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 
 const WISHES_URL = "http://localhost:8801"

@@ -1,0 +1,1 @@
+export { AddWishpage } from './AddWishpage'
