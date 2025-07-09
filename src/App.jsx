@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { AboutPage } from "./pages/AboutPage";
 import { IdeasPage } from "./pages/IdeasPage";
+import { DetailedWishPage } from "./pages/DetailedWishPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,7 +19,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/ideas" element={<IdeasPage />} />
             <Route path="/addwish" element={<p>добавь желание</p>} />
-            <Route path="/more/:id" element={<p>Подробнее о желании</p>} />
+            <Route path="/more/:id" element={<DetailedWishPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>

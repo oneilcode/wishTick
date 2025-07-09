@@ -1,0 +1,1 @@
+export { DetailedWishPage } from './DetailedWishPage'
