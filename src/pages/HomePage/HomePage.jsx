@@ -61,8 +61,6 @@ export const HomePage = () => {
         <SelectWishCards value={sortSelectValue} onChange={onSortSelectHandler}/> 
         </div>
         
-        
-
         <div>
           <Button onClick={() => navigate("/addwish")}>Добавить</Button>
         </div>
