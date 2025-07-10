@@ -1,6 +1,7 @@
 import cls from './AddWishpage.module.css';
 import { Button } from '../../components/Button';
 import { useActionState } from 'react';
+import { Loader } from '../../components/Loader';
 
 const WISHES_URL = "http://localhost:8801"
 
@@ -21,6 +22,10 @@ const createCardAction = async(_prevState, formData) => {
       })
     })
 
+    if(!response.ok) {
+      throw new Error(await response.statusText);
+      
+    }
     const newWish = response.json()
 
     return {}
@@ -35,6 +40,8 @@ const [formState, formAction, ispending] = useActionState(createCardAction, {cle
 
   return (
     <> 
+
+    {ispending && <Loader />}
       <h2 className={cls.formTitle}>Добавить желание</h2>
 
       <form className={cls.formContainer} action={formAction}>
@@ -50,7 +57,7 @@ const [formState, formAction, ispending] = useActionState(createCardAction, {cle
 
         <div className={cls.formControl}>
           <label htmlFor="img">Добавьте ссылку на картинку в формате https://...</label>
-          <textarea name="img" id="img" cols="30" rows="2"></textarea>
+          <textarea name="img" id="img" cols="30" rows="2" ></textarea>
         </div> 
 
         <Button>Добавить желание</Button>

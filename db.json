@@ -70,6 +70,13 @@
       "description": "Хочу собаку породы хаски блаблаблаблабала",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS76uJcTOqDNBP89Iek4-_7y4xrJUGreILuVuBYZGqFpT2dSnAe_sdoc-SIIqln-qmiv2vwsj8Ma2OfydBKNgppXg",
       "completed": false
+    },
+    {
+      "id": "2935",
+      "wish": "Хочу кошку",
+      "description": "Хочу ченую кошку и назвать ее Васька-маська",
+      "img": "https://murzikshop.ru/userfiles/clauses/large/3/27711_chernaya-koshka.png",
+      "completed": false
     }
   ]
 }
