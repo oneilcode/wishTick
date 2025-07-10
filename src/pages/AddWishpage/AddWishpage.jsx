@@ -1,7 +1,7 @@
 import cls from './AddWishpage.module.css';
-import { Button } from '../../components/Button';
 import { useActionState } from 'react';
 import { Loader } from '../../components/Loader';
+import { WishForm } from '../../components/WishForm';
 
 const WISHES_URL = "http://localhost:8801"
 
@@ -36,33 +36,15 @@ const createCardAction = async(_prevState, formData) => {
 }
 
 export const AddWishpage = () => {
-const [formState, formAction, ispending] = useActionState(createCardAction, {clearForm: false})
+const [formState, formAction, isPending] = useActionState(createCardAction, {clearForm: false})
 
   return (
     <> 
+      {isPending && <Loader />}
 
-    {ispending && <Loader />}
       <h2 className={cls.formTitle}>Добавить желание</h2>
 
-      <form className={cls.formContainer} action={formAction}>
-        <div className={cls.formControl}>
-          <label htmlFor="wishField">Ваше желание</label>
-          <textarea name="wish" id="wishField" cols="30" rows="2"  required></textarea>
-        </div>   
-
-        <div className={cls.formControl}>
-          <label htmlFor="descField">Добавьте подробное описание</label>
-          <textarea name="description" id="descField" cols="30" rows="10"></textarea>
-        </div> 
-
-        <div className={cls.formControl}>
-          <label htmlFor="img">Добавьте ссылку на картинку в формате https://...</label>
-          <textarea name="img" id="img" cols="30" rows="2" ></textarea>
-        </div> 
-
-        <Button>Добавить желание</Button>
-
-      </form>
+      <WishForm formAction={formAction} isPending={isPending} submitBtnText="Добавить желание"/>
     </>
   );
 };
