@@ -8,8 +8,6 @@ export const useFetch = (callback) => {
         try {
           setIsLoading(true);
           setError('')
-      
-
           const response = await callback(arg);
 
          return response

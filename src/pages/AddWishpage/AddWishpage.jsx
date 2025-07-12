@@ -6,6 +6,15 @@ import { WishForm } from '../../components/WishForm';
 const WISHES_URL = "http://localhost:8801"
 
 const createCardAction = async(_prevState, formData) => {
+
+  const dateFormat = (date) => {
+    return Intl.DateTimeFormat("ru-Ru", {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+    }).format(date)
+  }
+  
   try {
     await new Promise((res) => setTimeout(res, 2000))
 
@@ -19,7 +28,7 @@ const createCardAction = async(_prevState, formData) => {
         description: newWishCard.description,
         img: newWishCard.img,
         completed: false,
-        editDate: undefined,
+        editDate: dateFormat(new Date()),
       })
     })
 

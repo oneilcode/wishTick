@@ -63,3 +63,8 @@ width: 100%;
   .cardEdit {
     width: 300px;
   }
+
+  .cardButtons {
+    display: flex;
+    gap: 10px;
+  }

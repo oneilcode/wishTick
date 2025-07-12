@@ -12,8 +12,6 @@ const editCardAction = async (_prevState, formData) => {
         day: "numeric",
         month: "numeric",
         year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
     }).format(date)
   }
 

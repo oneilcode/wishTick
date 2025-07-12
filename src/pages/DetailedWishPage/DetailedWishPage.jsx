@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import cls from './DetailedWishPage.module.css';
 import { Button } from '../../components/Button';
 import { useEffect, useState } from 'react';
+import { useFetch } from '../../hooks/usefetch';
 
 const WISHES_URL = "http://localhost:8801"
 
@@ -21,34 +22,53 @@ export const DetailedWishPage = () => {
     }
   }
 
-    useEffect(() => {
-      getWishesCards()
-    }, [])
+  useEffect(() => {
+    getWishesCards()
+  }, [])
+
+    const [removeWish, isWishRemoving] = useFetch(async () => {
+      await fetch(`${WISHES_URL}/wishes/${params.id}`, {
+        method: "DELETE",
+      });
+    
+  
+      navigate("/")
+    });
+
+  const onRemoveWishHandler = () => {
+    const isRemove = confirm("Удать вопрос?")
+
+    isRemove && removeWish()
+  }
 
   return (
   <>
-  {
-    card !== null &&
-    (
-      <div className={cls.cardContainer}>
-      <div className={cls.card}>
-      <div className={cls.cardBtnWrapper}>
-          <Button className={cls.cardEdit} onClick={() => navigate(`/`)}>Назад</Button>
-          <p>Статус <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`} >{card.completed ? "исполнилось :)" : "жду :|"}</span></p>
-        </div> 
-        
-        <h5 className={cls.cardTitle}>{card.wish}</h5>
-        <p>{card.description}</p>
-        <img className={cls.cardImage} src={card.img} alt="wish image" />
+    {
+      card !== null &&
+      (
+        <div className={cls.cardContainer}>
+        <div className={cls.card}>
         <div className={cls.cardBtnWrapper}>
-          <p>Дата создания:  {card.editDate} </p>
-          <Button className={cls.cardEdit} onClick={() => navigate(`/editwish/${card.id}`)}>Редактировать</Button>
-        </div> 
+            <Button className={cls.cardEdit} onClick={() => navigate(`/`)}>Назад</Button>
+            <p>Статус <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`} >{card.completed ? "исполнилось :)" : "жду :|"}</span></p>
+          </div> 
+          
+          <h5 className={cls.cardTitle}>{card.wish}</h5>
+          <p>{card.description}</p>
+          <img className={cls.cardImage} src={card.img} alt="wish image" />
+          <div className={cls.cardBtnWrapper}>
+            <p>Дата создания/последнего редактирования:  {card.editDate} </p>
+            <div className={cls.cardButtons}> 
+              <Button className={cls.cardEdit} onClick={() => navigate(`/editwish/${card.id}`)}>Редактировать</Button>
+              <Button className={cls.cardEdit} onClick={onRemoveWishHandler}>Удалить</Button>
+            </div>
+            
+          </div> 
+        </div>
       </div>
-    </div>
-    
-    )
-  }
+      
+      )
+    }
     
   </>
   );
