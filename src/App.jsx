@@ -7,6 +7,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { IdeasPage } from "./pages/IdeasPage";
 import { DetailedWishPage } from "./pages/DetailedWishPage";
 import { AddWishpage } from "./pages/AddWishpage";
+import { EditWishPage } from "./pages/EditWishPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/ideas" element={<IdeasPage />} />
             <Route path="/addwish" element={<AddWishpage />} />
+            <Route path="/editwish/:id" element={<EditWishPage />} />
             <Route path="/more/:id" element={<DetailedWishPage />} />
 
             <Route path="*" element={<NotFoundPage />} />

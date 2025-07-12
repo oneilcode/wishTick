@@ -84,7 +84,13 @@
       "description": "Хочу научиться кодить и быть главным разрабом мира",
       "img": "https://memchik.ru//images/memes/5c48b7a3b1c7e32b0a203d8f.jpg",
       "completed": false
+    },
+    {
+      "id": "e603",
+      "wish": "4141",
+      "description": "4141414",
+      "img": "414141414",
+      "completed": false
     }
-   
   ]
 }

@@ -10,6 +10,7 @@ const createCardAction = async(_prevState, formData) => {
     await new Promise((res) => setTimeout(res, 2000))
 
     const newWishCard = Object.fromEntries(formData)
+    const isClearForm = newWishCard.clearForm
 
     const response = fetch(`${WISHES_URL}/wishes`, {
       method: "POST",
@@ -23,20 +24,20 @@ const createCardAction = async(_prevState, formData) => {
     })
 
     if(!response.ok) {
-      throw new Error(await response.statusText);
-      
+      throw new Error(await response.statusText); 
     }
     const newWish = response.json()
 
-    return {}
+    return isClearForm ? {} : newWish
+    
   } catch (error) {
-   console.log(error);
-   
+      console.log(error);
+      return {}
   }
 }
 
 export const AddWishpage = () => {
-const [formState, formAction, isPending] = useActionState(createCardAction, {clearForm: false})
+const [formState, formAction, isPending] = useActionState(createCardAction, {clearForm: true})
 
   return (
     <> 
@@ -44,7 +45,7 @@ const [formState, formAction, isPending] = useActionState(createCardAction, {cle
 
       <h2 className={cls.formTitle}>Добавить желание</h2>
 
-      <WishForm formAction={formAction} isPending={isPending} submitBtnText="Добавить желание"/>
+      <WishForm formAction={formAction} isPending={isPending} formState={formState} submitBtnText="Добавить желание"/>
     </>
   );
 };
