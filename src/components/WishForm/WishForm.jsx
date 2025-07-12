@@ -5,6 +5,8 @@ export const WishForm = ({ formAction, formState, isPending, submitBtnText}) => 
   
   return (
       <form className={cls.formContainer} action={formAction}>
+        <input type="text" name="wishId" defaultValue={formState.id} hidden />
+
         <div className={cls.formControl}>
           <label htmlFor="wishField">Ваше желание</label>
           <textarea defaultValue={formState.wish} name="wish" id="wishField" cols="30" rows="2"  required></textarea>

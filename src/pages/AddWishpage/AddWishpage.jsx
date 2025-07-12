@@ -24,7 +24,7 @@ const createCardAction = async(_prevState, formData) => {
     })
 
     if(!response.ok) {
-      throw new Error(await response.statusText); 
+      throw new Error(response.statusText); 
     }
     const newWish = response.json()
 

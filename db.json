@@ -6,7 +6,7 @@
       "description": "Хочу на море в августе со своими друзьями! Будет весело!",
       "img": "https://img.freepik.com/premium-photo/scenic-view-sea-against-blue-sky_1048944-12445648.jpg?semt=ais_hybrid&w=740",
       "completed": false,
-      "editDate": "01.01.2025"
+      "editDate": "12.07.2025, 18:51"
     },
     {
       "id": "2",
@@ -90,6 +90,13 @@
       "wish": "4141",
       "description": "4141414",
       "img": "414141414",
+      "completed": false
+    },
+    {
+      "id": "de3a",
+      "wish": "1",
+      "description": "47",
+      "img": "7474",
       "completed": false
     }
   ]
