@@ -4,7 +4,7 @@ import { Button } from '../../components/Button';
 import { useEffect, useId, useState } from 'react';
 import { useFetch } from '../../hooks/usefetch';
 
-const WISHES_URL = "http://localhost:8801"
+const WISHES_URL = import.meta.env.VITE_SERVER_URL
 
 export const DetailedWishPage = () => {
   const navigate = useNavigate();
@@ -73,8 +73,8 @@ export const DetailedWishPage = () => {
         <div className={cls.card}>
         <div className={cls.cardBtnWrapper}>
             <Button className={cls.cardEdit} onClick={() => navigate(`/`)}>Назад</Button>
-            <p checked={isChecked}  id={checkboxId}
-              onClick={onCheckboxChangeHandler}>Изаенить статус <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`} >{card.completed ? "исполнилось :)" : "жду :|"}</span></p>
+            <p className={cls.cardStatus} checked={isChecked}  id={checkboxId}
+              onClick={onCheckboxChangeHandler}>Изменить статус <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`} >{card.completed ? "исполнилось :)" : "жду :|"}</span></p>
           </div> 
       
           <h5 className={cls.cardTitle}>{card.wish}</h5>

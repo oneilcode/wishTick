@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { EditWish } from './EditWish';
 import { useFetch } from '../../hooks/usefetch';
 
-const WISHES_URL = "http://localhost:8801"
+const WISHES_URL = import.meta.env.VITE_SERVER_URL
 
 export const EditWishPage = () => {
   const { id } = useParams();

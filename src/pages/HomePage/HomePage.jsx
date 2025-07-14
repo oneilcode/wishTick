@@ -7,7 +7,7 @@ import { SelectWishCards } from '../../components/SelectWishCards';
 import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 
-const WISHES_URL = "http://localhost:8801"
+const WISHES_URL = import.meta.env.VITE_SERVER_URL
 
 export const HomePage = () => {
   const navigate = useNavigate();

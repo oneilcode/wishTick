@@ -3,7 +3,7 @@ import { useActionState } from 'react';
 import { Loader } from '../../components/Loader';
 import { WishForm } from '../../components/WishForm';
 
-const WISHES_URL = "http://localhost:8801"
+const WISHES_URL = import.meta.env.VITE_SERVER_URL
 
 const createCardAction = async(_prevState, formData) => {
 
