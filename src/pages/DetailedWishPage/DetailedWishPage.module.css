@@ -27,6 +27,7 @@ width: 100%;
     font-weight: 500;
     text-transform: capitalize;
     margin-left: 10px;
+    cursor: pointer;
   }
   
   .done {

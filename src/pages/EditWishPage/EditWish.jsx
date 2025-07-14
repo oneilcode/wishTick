@@ -49,7 +49,7 @@ const editCardAction = async (_prevState, formData) => {
 
 export const EditWish = ({ initialState = {} }) => {
   const [formState, formAction, isPending] = useActionState(editCardAction, { ...initialState, clearForm: true})
-  console.log("initialState:", initialState);
+  
   return (
     <> 
       {isPending && <Loader />}

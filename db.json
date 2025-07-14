@@ -1,35 +1,19 @@
 {
   "wishes": [
     {
-      "id": "1",
-      "wish": "Поехать на море",
-      "description": "Хочу на море в августе со своими друзьями! Будет весело!",
-      "img": "https://img.freepik.com/premium-photo/scenic-view-sea-against-blue-sky_1048944-12445648.jpg?semt=ais_hybrid&w=740",
-      "completed": false,
-      "editDate": "12.07.2025"
-    },
-    {
       "id": "2",
       "wish": "Купить машину",
       "description": "Всегда мечтала о крутой тачке",
       "img": "https://s0.rbk.ru/v6_top_pics/media/img/6/19/756129720103196.jpg",
       "completed": true,
-      "editDate": "12.07.2025, 20:55"
-    },
-    {
-      "id": "3",
-      "wish": "Хочу квартиру",
-      "description": "хочу квартиру!",
-      "img": "https://lh7-rt.googleusercontent.com/docsz/AD_4nXcXyZ_dOWf5xJCX_3QfVNiNs1YEjqKPv7-Da_YMzCcWXeVUUuj5GkmV_UaRuNexyWX5-99W_EBu2S6jVJb9siSE_OAKNDrZ4tUvqIYWgmuL8OmRUM2M8va6Dcwsss60IIEJKxboPJiLy7ifsVnVEZ35ozS6P261coBHJvjrflIEJ173vz0a23Q?key=maGlTezGJ6sKzfb7PV9pBA",
-      "completed": false,
-      "editDate": "03.01.2025"
+      "editDate": "14.07.2025"
     },
     {
       "id": "4",
       "wish": "Путешествие в Японию",
       "description": "Мечтаю посетить Токио, увидеть цветущую сакуру, попробовать настоящие суши в маленьком семейном ресторанчике, пожить в традиционном рёкане и искупаться в онсэне с видом на гору Фудзи. Хочу прогуляться по улицам Киото, посетить древние храмы и поучаствовать в чайной церемонии. Также мечтаю прокатиться на сверхскоростном поезде Синкансэн и купить японский нож на рыбном рынке Цукидзи.",
       "img": "https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "completed": false,
+      "completed": true,
       "editDate": "03.01.2025"
     },
     {
@@ -37,7 +21,7 @@
       "wish": "Научиться играть на пианино",
       "description": "Хочу освоить игру на фортепиано, чтобы исполнять классические произведения Бетховена и Шопена. Мечтаю сыграть 'Лунную сонату' и 'К Элизе' для своих друзей и семьи. Планирую заниматься с преподавателем два раза в неделю и ежедневно практиковаться хотя бы по 30 минут. Хочу через год уметь читать ноты с листа и импровизировать в джазовом стиле",
       "img": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "completed": true,
+      "completed": false,
       "editDate": "03.01.2025"
     },
     {
@@ -87,11 +71,11 @@
     },
     {
       "id": "e7c9",
-      "wish": "Хочу мороженого1",
+      "wish": "Хочу мороженого",
       "description": "Хочу мороженого камелия, вкусы: клубничный, ананасовый и тд",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQrRbXn-HPr8pzZ9AnT-7zYlOZiEgdUFuSlg&s",
       "completed": false,
-      "editDate": "12.07.2025, 20:55"
+      "editDate": "12.07.2025"
     }
   ]
 }
