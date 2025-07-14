@@ -8,3 +8,9 @@
   background: #F6F6f6;
   border-radius: 8px;
 }
+
+@media (max-width: 800px) { 
+  .search{
+    width: 100%;
+  }
+ }

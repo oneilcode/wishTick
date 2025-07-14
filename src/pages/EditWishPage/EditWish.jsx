@@ -39,7 +39,7 @@ const editCardAction = async (_prevState, formData) => {
     }
     const newWish = await response.json()
 
-    return isClearForm ? {} : newWish
+    return isClearForm ? { success: true } : { ...newWish, success: true }
     
   } catch (error) {
       console.log(error);
@@ -57,6 +57,14 @@ export const EditWish = ({ initialState = {} }) => {
       <h2 className={cls.formTitle}>Редактировать желание</h2>
 
       <WishForm formAction={formAction} isPending={isPending} formState={formState} submitBtnText="Редактировать желание"/>
+
+            {formState.success && !isPending && (
+                    <p className={cls.formMessage}>Желание успешно отредактированно!</p>
+                  )}
+      
+            {formState.error && !isPending && (
+              <p className={cls.formMessage}>Ошибка: {formState.error}</p>
+            )}
     </>
   );
 };

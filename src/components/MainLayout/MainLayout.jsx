@@ -12,9 +12,12 @@ export const MainLayout = () => {
           <Outlet />
         </main>
         <footer className={cls.footer}>
-          wishTick application | {currentYear}
+        Мечты становятся реальностью с WishTick!
           <br />
-          by Viktoriia O'Neil
+          
+          by Viktoriia O'Neil | {currentYear}
+          <br />
+          <br />
         </footer>
       </div>
     </div>

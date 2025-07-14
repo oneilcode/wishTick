@@ -5,7 +5,7 @@
       "wish": "Купить машину",
       "description": "Всегда мечтала о крутой тачке",
       "img": "https://s0.rbk.ru/v6_top_pics/media/img/6/19/756129720103196.jpg",
-      "completed": true,
+      "completed": false,
       "editDate": "14.07.2025"
     },
     {
@@ -57,10 +57,11 @@
     },
     {
       "id": "2935",
-      "wish": "Хочу кошку",
-      "description": "Хочу ченую кошку и назвать ее Васька-маська",
+      "wish": "Хочу кошку!",
+      "description": "Хочу ченую кошку и назвать ее Васька-маська!",
       "img": "https://murzikshop.ru/userfiles/clauses/large/3/27711_chernaya-koshka.png",
-      "completed": false
+      "completed": false,
+      "editDate": "14.07.2025"
     },
     {
       "id": "d751",
@@ -71,114 +72,10 @@
     },
     {
       "id": "e7c9",
-      "wish": "Хочу мороженого",
+      "wish": "Хочу пироженное",
       "description": "Хочу мороженого камелия, вкусы: клубничный, ананасовый и тд",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQrRbXn-HPr8pzZ9AnT-7zYlOZiEgdUFuSlg&s",
-      "completed": false,
-      "editDate": "12.07.2025"
-    },
-    {
-      "id": "1cf1",
-      "wish": "test",
-      "description": "test",
-      "img": "tets",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "6175",
-      "wish": "123",
-      "description": "123",
-      "img": "1212",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "ddaf",
-      "wish": "1",
-      "description": "1",
-      "img": "1",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "fc5e",
-      "wish": "74747",
-      "description": "77777",
-      "img": "7777",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "7d69",
-      "wish": "141",
-      "description": "41414",
-      "img": "141414",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "a8df",
-      "wish": "12",
-      "description": "12",
-      "img": "12",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "4d7f",
-      "wish": "ыв",
-      "description": "ыв",
-      "img": "ыв",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "0ad2",
-      "wish": "1",
-      "description": "1",
-      "img": "1",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "d3af",
-      "wish": "1",
-      "description": "14",
-      "img": "4",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "8d93",
-      "wish": "444",
-      "description": "444",
-      "img": "444",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "0e5b",
-      "wish": "7",
-      "description": "7",
-      "img": "7",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "494c",
-      "wish": " ",
-      "description": "hh",
-      "img": "hh",
-      "completed": false,
-      "editDate": "14.07.2025"
-    },
-    {
-      "id": "144f",
-      "wish": "4",
-      "description": "4",
-      "img": "4",
-      "completed": false,
+      "completed": true,
       "editDate": "14.07.2025"
     }
   ]
