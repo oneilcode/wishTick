@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MainLayout } from "./components/MainLayout/MainLayout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
@@ -10,8 +9,6 @@ import { AddWishpage } from "./pages/AddWishpage";
 import { EditWishPage } from "./pages/EditWishPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <BrowserRouter>

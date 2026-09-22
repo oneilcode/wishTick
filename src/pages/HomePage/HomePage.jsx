@@ -34,7 +34,7 @@ export const HomePage = () => {
   };
 
   const cards = wishes.filter((el) =>
-    el.wish.toLowerCase().includes(searchValue.trim().toLowerCase())
+    el.wish.toLowerCase().includes(searchValue.trim().toLowerCase()),
   );
 
   const onSearchChangeHandler = (e) => {
@@ -59,10 +59,7 @@ export const HomePage = () => {
         </div>
 
         <div>
-          <SelectWishCards
-            value={sortSelectValue}
-            onChange={onSortSelectHandler}
-          />
+          <SelectWishCards value={sortSelectValue} onChange={onSortSelectHandler} />
         </div>
 
         <div>
@@ -70,9 +67,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      {cards.length === 0 && (
-        <p className={cls.searchNoElements}>Нет элементов...</p>
-      )}
+      {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
 
       <WishCardList cards={cards} />
     </>

@@ -1,1 +1,1 @@
-export { WishCard } from './WishCard'
+export { WishCard } from "./WishCard";

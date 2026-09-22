@@ -1,1 +1,1 @@
-export { WishCardList } from './WishCardList'
+export { WishCardList } from "./WishCardList";

@@ -1,1 +1,1 @@
-export { WishForm } from './WishForm'
+export { WishForm } from "./WishForm";

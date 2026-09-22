@@ -18,7 +18,7 @@ export const Header = () => {
             <Link to="/ideas">Вдохновись идеями</Link>
           </li>
         </ul>
-    </nav> 
+      </nav>
     </header>
   );
 };

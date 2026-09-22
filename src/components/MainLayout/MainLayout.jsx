@@ -12,9 +12,8 @@ export const MainLayout = () => {
           <Outlet />
         </main>
         <footer className={cls.footer}>
-        Мечты становятся реальностью с WishTick!
+          Мечты становятся реальностью с WishTick!
           <br />
-          
           by Viktoriia O'Neil | {currentYear}
           <br />
           <br />

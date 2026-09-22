@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Loader } from '../../components/Loader';
-import { useParams } from 'react-router-dom';
-import { EditWish } from './EditWish';
-import { useFetch } from '../../hooks/usefetch';
+import { useEffect, useState } from "react";
+import { Loader } from "../../components/Loader";
+import { useParams } from "react-router-dom";
+import { EditWish } from "./EditWish";
+import { useFetch } from "../../hooks/usefetch";
 
-const WISHES_URL = import.meta.env.VITE_SERVER_URL
+const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
 export const EditWishPage = () => {
   const { id } = useParams();
@@ -25,9 +25,9 @@ export const EditWishPage = () => {
     <>
       {isWishLoading && <Loader />}
 
-      {wish && <EditWish initialState={wish}/>}
+      {wish && <EditWish initialState={wish} />}
     </>
   );
 };
 
-export default EditWishPage
+export default EditWishPage;

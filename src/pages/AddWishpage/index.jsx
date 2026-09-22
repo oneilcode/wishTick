@@ -1,1 +1,1 @@
-export { AddWishpage } from './AddWishpage'
+export { AddWishpage } from "./AddWishpage";
