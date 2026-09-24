@@ -1,1 +1,0 @@
-export {  EditWishPage } from './EditWishPage'

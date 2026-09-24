@@ -1,1 +1,0 @@
-export { SelectWishCards } from './SelectWishCards'

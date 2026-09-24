@@ -5,12 +5,12 @@
   padding: 10px;
   border: none;
   outline: none;
-  background: #F6F6f6;
+  background: #f6f6f6;
   border-radius: 8px;
 }
 
-@media (max-width: 800px) { 
-  .search{
+@media (max-width: 800px) {
+  .search {
     width: 100%;
   }
- }
+}
