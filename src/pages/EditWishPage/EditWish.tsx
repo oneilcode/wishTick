@@ -2,11 +2,19 @@ import { useActionState } from "react";
 import cls from "./EditWishPage.module.css";
 import { Loader } from "../../components/Loader";
 import { WishForm } from "../../components/WishForm";
+import type { Wish, WishFormState } from "../../types/wish";
 
 const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
-const editCardAction = async (_prevState, formData) => {
-  const dateFormat = (date) => {
+interface EditWishProps {
+  initialState: Wish;
+}
+
+const editCardAction = async (
+  _prevState: WishFormState,
+  formData: FormData,
+): Promise<WishFormState> => {
+  const dateFormat = (date: Date | number): string => {
     return Intl.DateTimeFormat("ru-Ru", {
       day: "numeric",
       month: "numeric",
@@ -45,7 +53,7 @@ const editCardAction = async (_prevState, formData) => {
   }
 };
 
-export const EditWish = ({ initialState = {} }) => {
+export const EditWish = ({ initialState }: EditWishProps) => {
   const [formState, formAction, isPending] = useActionState(editCardAction, {
     ...initialState,
     clearForm: true,

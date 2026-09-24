@@ -2,11 +2,15 @@ import cls from "./AddWishpage.module.css";
 import { useActionState } from "react";
 import { Loader } from "../../components/Loader";
 import { WishForm } from "../../components/WishForm";
+import type { WishFormState } from "../../types/wish";
 
 const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
-const createCardAction = async (_prevState, formData) => {
-  const dateFormat = (date) => {
+const createCardAction = async (
+  _prevState: WishFormState,
+  formData: FormData,
+): Promise<WishFormState> => {
+  const dateFormat = (date: Date | number): string => {
     return Intl.DateTimeFormat("ru-Ru", {
       day: "numeric",
       month: "numeric",

@@ -6,3 +6,9 @@ export interface Wish {
   completed: boolean;
   editDate: string;
 }
+
+export type WishFormState = Partial<Wish> & {
+  clearForm?: boolean;
+  success?: boolean;
+  error?: string;
+};

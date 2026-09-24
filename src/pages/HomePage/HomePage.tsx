@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import cls from "./HomePage.module.css";
 import { Loader } from "../../components/Loader";
 import { SearchInput } from "../../components/SearchInput";
@@ -6,6 +6,7 @@ import { WishCardList } from "../../components/WishCardList";
 import { SelectWishCards } from "../../components/SelectWishCards";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import type { Wish } from "../../types/wish";
 
 const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -13,11 +14,11 @@ export const HomePage = () => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState("");
-  const [wishes, setWishes] = useState([]);
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [sortSelectValue, setSortSelectValue] = useState("");
 
-  const getWishesCards = async (url) => {
+  const getWishesCards = async (url: string) => {
     try {
       setLoading(true);
 
@@ -37,11 +38,11 @@ export const HomePage = () => {
     el.wish.toLowerCase().includes(searchValue.trim().toLowerCase()),
   );
 
-  const onSearchChangeHandler = (e) => {
+  const onSearchChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const onSortSelectHandler = (e) => {
+  const onSortSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setSortSelectValue(e.target.value);
   };
 

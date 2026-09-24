@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import cls from "./IdeasPage.module.css";
 import { Button } from "../../components/Button";
 import { Loader } from "../../components/Loader";
+import type { UnsplashPicture } from "../../types/unsplash";
 
 export const IdeasPage = () => {
-  const [pictures, setPictures] = useState([]);
+  const [pictures, setPictures] = useState<UnsplashPicture[]>([]);
   const [visibleCount, setVisibleCount] = useState(10);
   const increment = 10;
   const [isLoading, setLoading] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
+  const [loadedImages, setLoadedImages] = useState<{ [id: string]: boolean }>({});
 
   const getPictures = async () => {
     try {
@@ -34,7 +35,7 @@ export const IdeasPage = () => {
 
   useEffect(() => {
     getPictures();
-  }, []); // Пустой массив зависимостей означает, что эффект сработает только при монтировании
+  }, []);
 
   return (
     <>

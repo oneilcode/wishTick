@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button/Button";
 import cls from "./WishCard.module.css";
+import type { Wish } from "../../types/wish";
 
-export const WishCard = ({ card }) => {
+interface WishCardProps {
+  card: Wish;
+}
+
+export const WishCard = ({ card }: WishCardProps) => {
   const navigate = useNavigate();
 
   return (

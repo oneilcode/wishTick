@@ -2,37 +2,40 @@ import { useNavigate, useParams } from "react-router-dom";
 import cls from "./DetailedWishPage.module.css";
 import { Button } from "../../components/Button";
 import { useEffect, useId, useState } from "react";
-import { useFetch } from "../../hooks/usefetch";
+import { useFetch } from "../../hooks/useFetch";
+import type { Wish } from "../../types/wish";
 
 const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
 export const DetailedWishPage = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const [card, setCard] = useState(null);
+  const [card, setCard] = useState<Wish | null>(null);
 
   const checkboxId = useId();
   const [isChecked, setIsChecked] = useState(false);
 
-  const getWishesCards = async () => {
-    try {
-      const response = await fetch(`${WISHES_URL}/wishes/${params.id}`);
-      const wishes = await response.json();
-      setCard(wishes);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
+    const getWishesCards = async () => {
+      try {
+        const response = await fetch(`${WISHES_URL}/wishes/${params.id}`);
+        const data = await response.json();
+        setCard(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     getWishesCards();
-  }, []);
+  }, [params.id]);
 
   useEffect(() => {
-    card !== null && setIsChecked(card.completed);
+    if (card !== null) {
+      setIsChecked(card.completed);
+    }
   }, [card]);
 
-  const [removeWish] = useFetch(async () => {
+  const [removeWish] = useFetch<void, void>(async (): Promise<void> => {
     await fetch(`${WISHES_URL}/wishes/${params.id}`, {
       method: "DELETE",
     });
@@ -40,7 +43,7 @@ export const DetailedWishPage = () => {
     navigate("/");
   });
 
-  const [updateCard] = useFetch(async (isChecked) => {
+  const [updateCard] = useFetch(async (isChecked: boolean) => {
     const response = await fetch(`${WISHES_URL}/wishes/${params.id}`, {
       method: "PATCH",
       body: JSON.stringify({ completed: isChecked }),
@@ -51,9 +54,10 @@ export const DetailedWishPage = () => {
   });
 
   const onRemoveWishHandler = () => {
-    const isRemove = confirm("Удать вопрос?");
-
-    isRemove && removeWish();
+    const isRemove = confirm("Удалить желание?");
+    if (isRemove) {
+      removeWish();
+    }
   };
 
   const onCheckboxChangeHandler = () => {
@@ -70,17 +74,19 @@ export const DetailedWishPage = () => {
               <Button className={cls.cardEdit} onClick={() => navigate(`/`)}>
                 Назад
               </Button>
-              <p
-                className={cls.cardStatus}
-                checked={isChecked}
+              <input
+                type="checkbox"
                 id={checkboxId}
-                onClick={onCheckboxChangeHandler}
-              >
+                checked={isChecked}
+                onChange={onCheckboxChangeHandler}
+                className={cls.hiddenCheckbox}
+              />
+              <label htmlFor={checkboxId} className={cls.cardStatus}>
                 Изменить статус{" "}
                 <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`}>
                   {card.completed ? "исполнилось :)" : "жду :|"}
                 </span>
-              </p>
+              </label>
             </div>
 
             <h5 className={cls.cardTitle}>{card.wish}</h5>
