@@ -7,24 +7,26 @@ import { IdeasPage } from "./pages/IdeasPage";
 import { DetailedWishPage } from "./pages/DetailedWishPage";
 import { AddWishpage } from "./pages/AddWishpage";
 import { EditWishPage } from "./pages/EditWishPage";
+import { AuthProvider } from "./auth/AuthProvider";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/ideas" element={<IdeasPage />} />
-            <Route path="/addwish" element={<AddWishpage />} />
-            <Route path="/editwish/:id" element={<EditWishPage />} />
-            <Route path="/more/:id" element={<DetailedWishPage />} />
-
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/ideas" element={<IdeasPage />} />
+              <Route path="/addwish" element={<AddWishpage />} />
+              <Route path="/editwish/:id" element={<EditWishPage />} />
+              <Route path="/more/:id" element={<DetailedWishPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </>
   );
 }
