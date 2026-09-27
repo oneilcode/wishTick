@@ -8,6 +8,8 @@ import { DetailedWishPage } from "./pages/DetailedWishPage";
 import { AddWishpage } from "./pages/AddWishpage";
 import { EditWishPage } from "./pages/EditWishPage";
 import { AuthProvider } from "./auth/AuthProvider";
+import { SignInPage } from "./pages/SignInPage";
+import { SignUpPage } from "./pages/SignUpPage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/signin" element={<SignInPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/ideas" element={<IdeasPage />} />
               <Route path="/addwish" element={<AddWishpage />} />
