@@ -1,0 +1,114 @@
+/* ============ PAGE ============ */
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ============ FORM ============ */
+.form {
+  width: 100%;
+  max-width: 400px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+/* ============ TITLE ============ */
+.title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111111;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+/* ============ FORM CONTROL ============ */
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formControl label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333333;
+  letter-spacing: -0.005em;
+}
+
+.formControl input {
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formControl input::placeholder {
+  color: #999999;
+}
+
+.formControl input:hover {
+  border-color: #cccccc;
+}
+
+.formControl input:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.06);
+}
+
+/* ============ ERROR ============ */
+.error {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============ FOOTER TEXT ============ */
+.form > p {
+  font-size: 0.875rem;
+  color: #666666;
+  text-align: center;
+  margin: 0;
+}
+
+.form > p a {
+  color: #111111;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #cccccc;
+  transition: border-color 0.2s ease;
+}
+
+.form > p a:hover {
+  border-bottom-color: #111111;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+  .form {
+    padding: 2rem 1.25rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
