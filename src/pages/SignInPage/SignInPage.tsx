@@ -30,38 +30,40 @@ export const SignInPage = () => {
   };
 
   return (
-    <form className={cls.form} onSubmit={onSubmitHandler}>
-      <h2 className={cls.title}>Вход</h2>
+    <div className={cls.page}>
+      <form className={cls.form} onSubmit={onSubmitHandler}>
+        <h2 className={cls.title}>Вход</h2>
 
-      <div className={cls.formControl}>
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          required
-        />
-      </div>
+        <div className={cls.formControl}>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={cls.formControl}>
-        <label htmlFor="password">Пароль</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+        <div className={cls.formControl}>
+          <label htmlFor="password">Пароль</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            required
+          />
+        </div>
 
-      {error && <p className={cls.error}>{error}</p>}
+        {error && <p className={cls.error}>{error}</p>}
 
-      <Button isDisabled={isLoading}>{isLoading ? "Вход..." : "Войти"}</Button>
+        <Button isDisabled={isLoading}>{isLoading ? "Вход..." : "Войти"}</Button>
 
-      <p>
-        Нет аккаунта? <Link to="/signup">Зарегистрироваться</Link>
-      </p>
-    </form>
+        <p>
+          Нет аккаунта? <Link to="/signup">Зарегистрироваться</Link>
+        </p>
+      </form>
+    </div>
   );
 };

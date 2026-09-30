@@ -1,47 +1,44 @@
-import cls from "./AddWishpage.module.css";
 import { useActionState } from "react";
+import cls from "./AddWishpage.module.css";
 import { Loader } from "../../components/Loader";
 import { WishForm } from "../../components/WishForm";
+import { createWish } from "../../api/wishes";
 import type { WishFormState } from "../../types/wish";
 
-const WISHES_URL = import.meta.env.VITE_SERVER_URL;
+const dateFormat = (date: Date | number): string => {
+  return Intl.DateTimeFormat("ru-Ru", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  }).format(date);
+};
 
 const createCardAction = async (
   _prevState: WishFormState,
   formData: FormData,
 ): Promise<WishFormState> => {
-  const dateFormat = (date: Date | number): string => {
-    return Intl.DateTimeFormat("ru-Ru", {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric",
-    }).format(date);
-  };
-
   try {
-    await new Promise((res) => setTimeout(res, 2000));
+    const newWishCard = Object.fromEntries(formData) as {
+      wish: string;
+      description: string;
+      img: string;
+      clearForm?: string;
+    };
 
-    const newWishCard = Object.fromEntries(formData);
     const isClearForm = newWishCard.clearForm;
 
-    const response = await fetch(`${WISHES_URL}/wishes`, {
-      method: "POST",
-      body: JSON.stringify({
-        wish: newWishCard.wish,
-        description: newWishCard.description,
-        img: newWishCard.img,
-        completed: false,
-        editDate: dateFormat(new Date()),
-      }),
+    const { data, error } = await createWish({
+      wish: newWishCard.wish,
+      description: newWishCard.description,
+      img: newWishCard.img,
+      editDate: dateFormat(new Date()),
     });
 
-    if (!response.ok) {
-      throw Error(response.statusText);
+    if (error) {
+      return { error: error.message };
     }
 
-    const newWish = await response.json();
-
-    return isClearForm ? { success: true } : { ...newWish, success: true };
+    return isClearForm ? { success: true } : { ...data, success: true };
   } catch (error) {
     console.log(error);
     return {};

@@ -1,8 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import cls from "./Header.module.css";
+import { useAuth } from "../../auth/useAuth";
+import { signOut } from "../../auth/authApi";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const onSignOutHandler = async () => {
+    await signOut();
+    navigate("/signin");
+  };
+
   return (
     <header className={cls.header}>
       <div className={cls.iconWrapper} onClick={() => navigate("/")}>
@@ -12,11 +21,27 @@ export const Header = () => {
       <nav>
         <ul className={cls.headerNav}>
           <li>
-            <Link to="/about">Как это работает</Link>
-          </li>
-          <li>
             <Link to="/ideas">Вдохновись идеями</Link>
           </li>
+          {user ? (
+            <>
+              <li>
+                <Link to="/mywishes">Мои желания</Link>
+              </li>
+              <li>
+                <span>{user.email}</span> <button onClick={onSignOutHandler}>Выйти</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/signin">Войти</Link>
+              </li>
+              <li>
+                <Link to="/signup">Регистрация</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
