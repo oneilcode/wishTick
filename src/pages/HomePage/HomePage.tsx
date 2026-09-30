@@ -1,76 +1,149 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import cls from "./HomePage.module.css";
-import { Loader } from "../../components/Loader";
-import { SearchInput } from "../../components/SearchInput";
-import { WishCardList } from "../../components/WishCardList";
-import { SelectWishCards } from "../../components/SelectWishCards";
-import { Button } from "../../components/Button";
-import { useNavigate } from "react-router-dom";
-import type { Wish } from "../../types/wish";
-
-const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
 export const HomePage = () => {
-  const navigate = useNavigate();
-
-  const [searchValue, setSearchValue] = useState("");
-  const [wishes, setWishes] = useState<Wish[]>([]);
-  const [isLoading, setLoading] = useState(false);
-  const [sortSelectValue, setSortSelectValue] = useState("");
-
-  const getWishesCards = async (url: string) => {
-    try {
-      setLoading(true);
-
-      await new Promise((res) => setTimeout(res, 2000));
-      const response = await fetch(`${WISHES_URL}/${url}`);
-      const wishes = await response.json();
-
-      setWishes(wishes);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const cards = wishes.filter((el) =>
-    el.wish.toLowerCase().includes(searchValue.trim().toLowerCase()),
-  );
-
-  const onSearchChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-
-  const onSortSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSortSelectValue(e.target.value);
-  };
-
-  useEffect(() => {
-    getWishesCards(`wishes?${sortSelectValue}`);
-  }, [sortSelectValue]);
-
   return (
-    <>
-      {isLoading && <Loader />}
+    <div className={cls.page}>
+      {/* ============ HERO ============ */}
+      <section className={cls.hero}>
+        <motion.h1
+          className={cls.heroTitle}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Твои мечты <span className={cls.accent}>под контролем</span>
+        </motion.h1>
 
-      <div className={cls.searchWrapper}>
-        <div>
-          <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
+        <motion.p
+          className={cls.heroSubtitle}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          Записывай. Мечтай. Достигай. <br></br> Твои желания заслуживают внимания.
+        </motion.p>
+
+        <motion.div
+          className={cls.heroButtons}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+        >
+          <Link to="/register" className={cls.btnPrimary}>
+            Начать бесплатно
+          </Link>
+          <Link to="/login" className={cls.btnSecondary}>
+            Войти →
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className={cls.section}>
+        <motion.h2
+          className={cls.sectionTitle}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Как это работает
+        </motion.h2>
+
+        <div className={cls.cards}>
+          {[
+            {
+              num: "01",
+              title: "Добавляй желания",
+              text: "Фиксируй всё — от маленьких радостей до больших целей. Первый шаг к исполнению — записать мечту.",
+            },
+            {
+              num: "02",
+              title: "Отслеживай статус",
+              text: "Отмечай, что сбылось, а что в процессе. Видь прогресс и заряжайся мотивацией.",
+            },
+            {
+              num: "03",
+              title: "Вдохновляйся",
+              text: "Оглядывайся на исполненные мечты и находи силы для новых свершений.",
+            },
+          ].map((step, i) => (
+            <motion.div
+              key={step.title}
+              className={cls.card}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <span className={cls.cardNumber}>{step.num}</span>
+              <h3 className={cls.cardTitle}>{step.title}</h3>
+              <p className={cls.cardText}>{step.text}</p>
+            </motion.div>
+          ))}
         </div>
+      </section>
 
-        <div>
-          <SelectWishCards value={sortSelectValue} onChange={onSortSelectHandler} />
+      {/* ============ FEATURES ============ */}
+      <section className={cls.section}>
+        <motion.h2
+          className={cls.sectionTitle}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Больше, чем список
+        </motion.h2>
+
+        <div className={cls.featuresList}>
+          {[
+            {
+              title: "Осознанное управление",
+              text: "Инструмент, который помогает не просто мечтать, а двигаться к цели.",
+            },
+            {
+              title: "Источник вдохновения",
+              text: "Твоя личная коллекция исполненных желаний — топливо для новых свершений.",
+            },
+            {
+              title: "Никаких забытых мечт",
+              text: "Чёткий план, контроль и радость от каждого шага к мечте.",
+            },
+          ].map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              className={cls.feature}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <h3 className={cls.featureTitle}>{feature.title}</h3>
+              <p className={cls.featureText}>{feature.text}</p>
+            </motion.div>
+          ))}
         </div>
+      </section>
 
-        <div>
-          <Button onClick={() => navigate("/addwish")}>Добавить</Button>
-        </div>
-      </div>
-
-      {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
-
-      <WishCardList cards={cards} />
-    </>
+      {/* ============ CTA ============ */}
+      <motion.section
+        className={cls.cta}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className={cls.ctaTitle}>Присоединяйся к тем, кто не просто мечтает</h2>
+        <p className={cls.ctaText}>
+          Начни отслеживать свои желания сегодня и удивись, как много ты уже сделал.
+        </p>
+        <Link to="/register" className={cls.btnPrimary}>
+          Создать первое желание
+        </Link>
+      </motion.section>
+    </div>
   );
 };
