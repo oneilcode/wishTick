@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "../Button/Button";
 import cls from "./WishCard.module.css";
-import { deleteWish, updateWish } from "../../api/wishes";
-import type { Wish } from "../../types/wish";
-import { DEFAULT_WISH_IMAGE } from "../../constants/defaultWishImage";
+import { deleteWish, updateWish } from "@/api/wishes";
+import type { Wish } from "@/types/wish";
+import { DEFAULT_WISH_IMAGE } from "@/constants/defaultWishImage";
 import { useState } from "react";
 
 interface WishCardProps {
