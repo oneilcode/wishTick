@@ -4,6 +4,8 @@ import { Button } from "../Button/Button";
 import cls from "./WishCard.module.css";
 import { deleteWish, updateWish } from "../../api/wishes";
 import type { Wish } from "../../types/wish";
+import { DEFAULT_WISH_IMAGE } from "../../constants/defaultWishImage";
+import { useState } from "react";
 
 interface WishCardProps {
   card: Wish;
@@ -13,6 +15,7 @@ interface WishCardProps {
 
 export const WishCard = ({ card, onDelete, onUpdate }: WishCardProps) => {
   const navigate = useNavigate();
+  const [imgSrc, setImgSrc] = useState(card.img || DEFAULT_WISH_IMAGE);
 
   const performDelete = async () => {
     const { error } = await deleteWish(card.id);
@@ -70,7 +73,12 @@ export const WishCard = ({ card, onDelete, onUpdate }: WishCardProps) => {
       </label>
 
       <h5 className={cls.cardTitle}>{card.wish}</h5>
-      <img className={cls.cardImage} src={card.img} alt="wish image" />
+      <img
+        className={cls.cardImage}
+        src={imgSrc}
+        onError={() => setImgSrc(DEFAULT_WISH_IMAGE)}
+        alt="wish image"
+      />
 
       <div className={cls.cardButtons}>
         <Button onClick={() => navigate(`/more/${card.id}`)}>Подробнее</Button>
