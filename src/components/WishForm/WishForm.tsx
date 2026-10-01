@@ -15,7 +15,7 @@ export const WishForm = ({ formAction, formState, isPending, submitBtnText }: Wi
       <input type="text" name="wishId" defaultValue={formState.id} hidden />
 
       <div className={cls.formControl}>
-        <label htmlFor="wishField">Ваше желание</label>
+        <label htmlFor="wishField">Ваше желание*</label>
         <textarea
           defaultValue={formState.wish}
           name="wish"
@@ -41,17 +41,6 @@ export const WishForm = ({ formAction, formState, isPending, submitBtnText }: Wi
         <label htmlFor="img">Добавьте ссылку на картинку в формате https://...</label>
         <textarea defaultValue={formState.img} name="img" id="img" cols={30} rows={2}></textarea>
       </div>
-
-      <label htmlFor="clearFormField" className={cls.clearFormControl}>
-        <input
-          id="clearFormField"
-          type="checkbox"
-          className={cls.clearCheckbox}
-          name="clearForm"
-          defaultChecked={formState.clearForm}
-        />
-        <span>Очистить форму после добавления вопроса</span>
-      </label>
 
       <Button isDisabled={isPending}>{submitBtnText}</Button>
     </form>
