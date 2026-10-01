@@ -14,7 +14,7 @@ export const MyWishesPage = () => {
 
   const [searchValue, setSearchValue] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [sortValue, setSortValue] = useState<"asc" | "desc" | "">("");
 
   const fetchWishes = async () => {
@@ -46,10 +46,17 @@ export const MyWishesPage = () => {
     setSortValue(e.target.value as "asc" | "desc" | "");
   };
 
+  const onDeleteHandler = (id: string) => {
+    setWishes((prev) => prev.filter((wish) => wish.id !== id));
+  };
+
+  const onUpdateHandler = (updatedCard: Wish) => {
+    setWishes((prev) => prev.map((wish) => (wish.id === updatedCard.id ? updatedCard : wish)));
+  };
+
   return (
     <>
       {isLoading && <Loader />}
-
       <div className={cls.searchWrapper}>
         <div>
           <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
@@ -63,10 +70,8 @@ export const MyWishesPage = () => {
           <Button onClick={() => navigate("/addwish")}>Добавить</Button>
         </div>
       </div>
-
       {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
-
-      <WishCardList cards={cards} />
+      <WishCardList cards={cards} onDelete={onDeleteHandler} onUpdate={onUpdateHandler} />.
     </>
   );
 };

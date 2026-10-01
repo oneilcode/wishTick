@@ -5,14 +5,16 @@ import type { Wish } from "../../types/wish";
 
 interface WishCardListProps {
   cards: Wish[];
+  onDelete: (id: string) => void;
+  onUpdate: (updatedCard: Wish) => void;
 }
 
-export const WishCardList = memo(({ cards }: WishCardListProps) => {
+export const WishCardList = memo(({ cards, onDelete, onUpdate }: WishCardListProps) => {
   return (
     <div className={cls.wishesWrapper}>
-      {cards.map((card) => {
-        return <WishCard key={card.id} card={card} />;
-      })}
+      {cards.map((card) => (
+        <WishCard key={card.id} card={card} onDelete={onDelete} onUpdate={onUpdate} />
+      ))}
     </div>
   );
 });

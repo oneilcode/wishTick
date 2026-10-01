@@ -3,31 +3,32 @@ import cls from "./DetailedWishPage.module.css";
 import { Button } from "../../components/Button";
 import { useEffect, useId, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import { getWishById, deleteWish, updateWish } from "../../api/wishes";
 import type { Wish } from "../../types/wish";
-
-const WISHES_URL = import.meta.env.VITE_SERVER_URL;
+import { formatDate } from "../../utils/formatDate";
 
 export const DetailedWishPage = () => {
   const navigate = useNavigate();
-  const params = useParams();
+  const { id } = useParams();
   const [card, setCard] = useState<Wish | null>(null);
 
   const checkboxId = useId();
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    const getWishesCards = async () => {
-      try {
-        const response = await fetch(`${WISHES_URL}/wishes/${params.id}`);
-        const data = await response.json();
-        setCard(data);
-      } catch (error) {
+    if (!id) return;
+
+    const fetchWish = async () => {
+      const { data, error } = await getWishById(id);
+      if (error) {
         console.error(error);
+        return;
       }
+      setCard(data);
     };
 
-    getWishesCards();
-  }, [params.id]);
+    fetchWish();
+  }, [id]);
 
   useEffect(() => {
     if (card !== null) {
@@ -36,20 +37,26 @@ export const DetailedWishPage = () => {
   }, [card]);
 
   const [removeWish] = useFetch<void, void>(async (): Promise<void> => {
-    await fetch(`${WISHES_URL}/wishes/${params.id}`, {
-      method: "DELETE",
-    });
+    if (!id) return;
 
-    navigate("/");
+    const { error } = await deleteWish(id);
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    navigate("/mywishes");
   });
 
-  const [updateCard] = useFetch(async (isChecked: boolean) => {
-    const response = await fetch(`${WISHES_URL}/wishes/${params.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ completed: isChecked }),
-    });
+  const [updateCard] = useFetch(async (nextChecked: boolean) => {
+    if (!id) return;
 
-    const data = await response.json();
+    const { data, error } = await updateWish(id, { completed: nextChecked });
+    if (error) {
+      console.error(error);
+      return;
+    }
+
     setCard(data);
   });
 
@@ -71,7 +78,7 @@ export const DetailedWishPage = () => {
         <div className={cls.cardContainer}>
           <div className={cls.card}>
             <div className={cls.cardBtnWrapper}>
-              <Button className={cls.cardEdit} onClick={() => navigate(`/`)}>
+              <Button className={cls.cardEdit} onClick={() => navigate(`/mywishes`)}>
                 Назад
               </Button>
               <input
@@ -93,7 +100,7 @@ export const DetailedWishPage = () => {
             <p>{card.description}</p>
             <img className={cls.cardImage} src={card.img} alt="wish image" />
             <div className={cls.cardBtnWrapper}>
-              <p>Дата создания/последнего редактирования: {card.editDate} </p>
+              <p>Дата создания/последнего редактирования: {formatDate(card.editDate)} </p>
               <div className={cls.cardButtons}>
                 <Button className={cls.cardEdit} onClick={() => navigate(`/editwish/${card.id}`)}>
                   Редактировать

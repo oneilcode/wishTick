@@ -3,17 +3,21 @@ import { Loader } from "../../components/Loader";
 import { useParams } from "react-router-dom";
 import { EditWish } from "./EditWish";
 import { useFetch } from "../../hooks/useFetch";
+import { getWishById } from "../../api/wishes";
 import type { Wish } from "../../types/wish";
-
-const WISHES_URL = import.meta.env.VITE_SERVER_URL;
 
 export const EditWishPage = () => {
   const { id } = useParams();
   const [wish, setWish] = useState<Wish | null>(null);
 
   const [fetchWish, isWishLoading] = useFetch<void, void>(async (): Promise<void> => {
-    const response = await fetch(`${WISHES_URL}/wishes/${id}`);
-    const data = await response.json();
+    if (!id) return;
+
+    const { data, error } = await getWishById(id);
+    if (error) {
+      console.error(error);
+      return;
+    }
 
     setWish(data);
   });
@@ -22,9 +26,11 @@ export const EditWishPage = () => {
     fetchWish();
   }, []);
 
+  const isLoading = isWishLoading || wish === null;
+
   return (
     <>
-      {isWishLoading && <Loader />}
+      {isLoading && <Loader />}
 
       {wish && <EditWish initialState={wish} />}
     </>

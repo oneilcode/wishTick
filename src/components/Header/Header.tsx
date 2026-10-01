@@ -20,16 +20,18 @@ export const Header = () => {
       </div>
       <nav>
         <ul className={cls.headerNav}>
-          <li>
-            <Link to="/ideas">Вдохновись идеями</Link>
-          </li>
           {user ? (
             <>
+              <li>
+                <Link to="/ideas">Вдохновись идеями</Link>
+              </li>
               <li>
                 <Link to="/mywishes">Мои желания</Link>
               </li>
               <li>
-                <span>{user.email}</span> <button onClick={onSignOutHandler}>Выйти</button>
+                <button className={cls.navLink} onClick={onSignOutHandler}>
+                  Выйти
+                </button>
               </li>
             </>
           ) : (

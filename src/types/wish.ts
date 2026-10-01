@@ -8,7 +8,6 @@ export interface Wish {
 }
 
 export type WishFormState = Partial<Wish> & {
-  clearForm?: boolean;
   success?: boolean;
   error?: string;
 };
