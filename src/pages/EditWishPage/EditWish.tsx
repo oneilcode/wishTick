@@ -1,10 +1,11 @@
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import cls from "./EditWishPage.module.css";
 import { Loader } from "../../components/Loader";
 import { WishForm } from "../../components/WishForm";
+import { updateWish } from "../../api/wishes";
 import type { Wish, WishFormState } from "../../types/wish";
-
-const WISHES_URL = import.meta.env.VITE_SERVER_URL;
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface EditWishProps {
   initialState: Wish;
@@ -14,54 +15,57 @@ const editCardAction = async (
   _prevState: WishFormState,
   formData: FormData,
 ): Promise<WishFormState> => {
-  const dateFormat = (date: Date | number): string => {
-    return Intl.DateTimeFormat("ru-Ru", {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric",
-    }).format(date);
-  };
-
   try {
-    await new Promise((res) => setTimeout(res, 2000));
+    const newWishCard = Object.fromEntries(formData) as {
+      wishId: string;
+      wish: string;
+      description: string;
+      img: string;
+    };
 
-    const newWishCard = Object.fromEntries(formData);
-    const wishId = newWishCard.wishId;
-
-    const isClearForm = newWishCard.clearForm;
-
-    const response = await fetch(`${WISHES_URL}/wishes/${wishId}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        wish: newWishCard.wish,
-        description: newWishCard.description,
-        img: newWishCard.img,
-        completed: false,
-        editDate: dateFormat(new Date()),
-      }),
+    const { data, error } = await updateWish(newWishCard.wishId, {
+      wish: newWishCard.wish,
+      description: newWishCard.description,
+      img: newWishCard.img,
+      editDate: new Date().toISOString(),
     });
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
+    if (error) {
+      return { error: error.message };
     }
-    const newWish = await response.json();
 
-    return isClearForm ? { success: true } : { ...newWish, success: true };
+    return { ...data, success: true };
   } catch (error) {
     console.log(error);
-    return {};
+    return { error: "Не удалось отредактировать желание" };
   }
 };
 
 export const EditWish = ({ initialState }: EditWishProps) => {
+  const navigate = useNavigate();
+
   const [formState, formAction, isPending] = useActionState(editCardAction, {
     ...initialState,
-    clearForm: true,
   });
+
+  const isRedirecting = formState.success === true;
+
+  useEffect(() => {
+    if (formState.success) {
+      toast.success("Желание успешно отредактировано!");
+      navigate("/mywishes", { replace: true });
+    }
+  }, [formState.success, navigate]);
+
+  useEffect(() => {
+    if (formState.error) {
+      toast.error(`Ошибка: ${formState.error}`);
+    }
+  }, [formState.error]);
 
   return (
     <>
-      {isPending && <Loader />}
+      {(isPending || isRedirecting) && <Loader />}
 
       <h2 className={cls.formTitle}>Редактировать желание</h2>
 
@@ -71,14 +75,6 @@ export const EditWish = ({ initialState }: EditWishProps) => {
         formState={formState}
         submitBtnText="Редактировать желание"
       />
-
-      {formState.success && !isPending && (
-        <p className={cls.formMessage}>Желание успешно отредактированно!</p>
-      )}
-
-      {formState.error && !isPending && (
-        <p className={cls.formMessage}>Ошибка: {formState.error}</p>
-      )}
     </>
   );
 };
