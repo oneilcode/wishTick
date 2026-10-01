@@ -1,4 +1,4 @@
-import type { WishFormState } from "../../types/wish";
+import type { WishFormState } from "@/types/wish";
 import { Button } from "../Button";
 import cls from "./WishForm.module.css";
 
