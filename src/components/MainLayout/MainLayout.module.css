@@ -1,3 +1,22 @@
+/* ===== Переменные ===== */
+.mainWrapper {
+  --container-max: 1200px;
+  --container-padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .mainWrapper {
+    --container-padding: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mainWrapper {
+    --container-padding: 32px;
+  }
+}
+
+/* ===== Layout ===== */
 .mainLayot {
   display: flex;
   flex-direction: column;
@@ -8,19 +27,27 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
 
 .main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
 }
 
+/* ===== Футер ===== */
 .footer {
-  padding: 2rem;
+  width: 100%;
+  padding: 24px;
   text-align: center;
-  font-size: 0.875rem;
-  color: #666666;
-  border-top: 1px solid #e5e5e5;
-  background: #ffffff;
+  color: #6b6b6b;
+  font-size: 14px;
+  line-height: 1.5;
+  border-top: 1px solid #ececf1;
+  background: #fafafc;
 }

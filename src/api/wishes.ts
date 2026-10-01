@@ -1,5 +1,5 @@
-import { supabase } from "../lib/supabase";
-import type { Wish } from "../types/wish";
+import { supabase } from "@/lib/supabase";
+import type { Wish } from "@/types/wish";
 
 function mapWishFromDb(row: Record<string, unknown>): Wish {
   const { edit_date, ...rest } = row;

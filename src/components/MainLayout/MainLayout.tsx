@@ -11,14 +11,13 @@ export const MainLayout = () => {
         <main className={cls.main}>
           <Outlet />
         </main>
-        <footer className={cls.footer}>
-          Мечты становятся реальностью с WishTick!
-          <br />
-          by Viktoriia O'Neil | {currentYear}
-          <br />
-          <br />
-        </footer>
       </div>
+      <footer className={cls.footer}>
+        Мечты становятся реальностью с WishTick!
+        <br />
+        by Viktoriia O'Neil | {currentYear}
+        <br />
+      </footer>
     </div>
   );
 };

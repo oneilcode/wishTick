@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { WishCard } from "../WishCard";
 import cls from "./WishCardList.module.css";
-import type { Wish } from "../../types/wish";
+import type { Wish } from "@/types/wish";
 
 interface WishCardListProps {
   cards: Wish[];

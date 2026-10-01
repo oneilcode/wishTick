@@ -1,7 +1,7 @@
 /* ============ PAGE ============ */
 .page {
   min-height: 100vh;
-  background: #ffffff;
+  /* background: #ffffff; */
   color: #111111;
   font-family:
     system-ui,

@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import cls from "./Header.module.css";
-import { useAuth } from "../../auth/useAuth";
-import { signOut } from "../../auth/authApi";
+import { useAuth } from "@/auth/useAuth";
+import { signOut } from "@/auth/authApi";
 
 export const Header = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
   const onSignOutHandler = async () => {
+    navigate("/", { replace: true });
     await signOut();
-    navigate("/signin");
   };
 
   return (

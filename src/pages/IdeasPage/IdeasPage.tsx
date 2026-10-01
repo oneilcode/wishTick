@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import cls from "./IdeasPage.module.css";
-import { Button } from "../../components/Button";
-import { Loader } from "../../components/Loader";
-import type { UnsplashPicture } from "../../types/unsplash";
+import { Button } from "@/components/Button";
+import { Loader } from "@/components/Loader";
+import type { UnsplashPicture } from "@/types/unsplash";
 
 export const IdeasPage = () => {
   const [pictures, setPictures] = useState<UnsplashPicture[]>([]);
