@@ -1,7 +1,7 @@
 import { useState, type SyntheticEvent, type ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { signIn } from "../../auth/authApi";
-import { Button } from "../../components/Button";
+import { signIn } from "@/auth/authApi";
+import { Button } from "@/components/Button";
 import cls from "./SignInPage.module.css";
 
 export const SignInPage = () => {
