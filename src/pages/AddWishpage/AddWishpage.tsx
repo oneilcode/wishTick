@@ -2,10 +2,10 @@ import { useActionState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import cls from "./AddWishpage.module.css";
-import { Loader } from "../../components/Loader";
-import { WishForm } from "../../components/WishForm";
-import { createWish } from "../../api/wishes";
-import type { WishFormState } from "../../types/wish";
+import { Loader } from "@/components/Loader";
+import { WishForm } from "@/components/WishForm";
+import { createWish } from "@/api/wishes";
+import type { WishFormState } from "@/types/wish";
 
 const createCardAction = async (
   _prevState: WishFormState,

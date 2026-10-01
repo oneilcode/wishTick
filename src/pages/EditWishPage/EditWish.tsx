@@ -1,9 +1,9 @@
 import { useActionState, useEffect } from "react";
 import cls from "./EditWishPage.module.css";
-import { Loader } from "../../components/Loader";
-import { WishForm } from "../../components/WishForm";
-import { updateWish } from "../../api/wishes";
-import type { Wish, WishFormState } from "../../types/wish";
+import { Loader } from "@/components/Loader";
+import { WishForm } from "@/components/WishForm";
+import { updateWish } from "@/api/wishes";
+import type { Wish, WishFormState } from "@/types/wish";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -73,7 +73,7 @@ export const EditWish = ({ initialState }: EditWishProps) => {
         formAction={formAction}
         isPending={isPending}
         formState={formState}
-        submitBtnText="Редактировать желание"
+        submitBtnText="Сохранить изменения"
       />
     </>
   );
