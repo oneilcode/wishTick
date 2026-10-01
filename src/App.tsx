@@ -11,32 +11,32 @@ import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { MyWishesPage } from "./pages/MyWishesPage";
+import { Toaster } from "sonner";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/signin" element={<SignInPage />} />
-              <Route path="/ideas" element={<IdeasPage />} />
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/ideas" element={<IdeasPage />} />
 
-              <Route element={<ProtectedRoute />}>
-                <Route path="/mywishes" element={<MyWishesPage />} />
-                <Route path="/addwish" element={<AddWishpage />} />
-                <Route path="/editwish/:id" element={<EditWishPage />} />
-              </Route>
-
-              <Route path="/more/:id" element={<DetailedWishPage />} />
-              <Route path="*" element={<NotFoundPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/mywishes" element={<MyWishesPage />} />
+              <Route path="/addwish" element={<AddWishpage />} />
+              <Route path="/editwish/:id" element={<EditWishPage />} />
             </Route>
-          </Routes>
-        </BrowserRouter>
+
+            <Route path="/more/:id" element={<DetailedWishPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </AuthProvider>
-    </>
+      <Toaster position="top-right" richColors closeButton />
+    </BrowserRouter>
   );
 }
 
