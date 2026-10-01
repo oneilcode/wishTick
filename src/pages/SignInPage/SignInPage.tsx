@@ -26,7 +26,7 @@ export const SignInPage = () => {
       return;
     }
 
-    navigate("/");
+    navigate("/mywishes");
   };
 
   return (

@@ -5,7 +5,6 @@ import cls from "./HomePage.module.css";
 export const HomePage = () => {
   return (
     <div className={cls.page}>
-      {/* ============ HERO ============ */}
       <section className={cls.hero}>
         <motion.h1
           className={cls.heroTitle}
@@ -31,16 +30,15 @@ export const HomePage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <Link to="/register" className={cls.btnPrimary}>
+          <Link to="/signup" className={cls.btnPrimary}>
             Начать бесплатно
           </Link>
-          <Link to="/login" className={cls.btnSecondary}>
+          <Link to="/signin" className={cls.btnSecondary}>
             Войти →
           </Link>
         </motion.div>
       </section>
 
-      {/* ============ HOW IT WORKS ============ */}
       <section className={cls.section}>
         <motion.h2
           className={cls.sectionTitle}
@@ -86,7 +84,6 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* ============ FEATURES ============ */}
       <section className={cls.section}>
         <motion.h2
           className={cls.sectionTitle}
@@ -128,7 +125,6 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* ============ CTA ============ */}
       <motion.section
         className={cls.cta}
         initial={{ opacity: 0, y: 20 }}
@@ -140,7 +136,7 @@ export const HomePage = () => {
         <p className={cls.ctaText}>
           Начни отслеживать свои желания сегодня и удивись, как много ты уже сделал.
         </p>
-        <Link to="/register" className={cls.btnPrimary}>
+        <Link to="/signup" className={cls.btnPrimary}>
           Создать первое желание
         </Link>
       </motion.section>
