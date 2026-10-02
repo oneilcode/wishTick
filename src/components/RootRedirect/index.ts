@@ -1,0 +1,1 @@
+export { RootRedirect } from "./RootRedirect";
