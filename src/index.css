@@ -24,3 +24,56 @@ a {
   text-decoration: none;
   color: initial;
 }
+
+/* ============ SONNER TOASTS ============ */
+.app-toast {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 12px !important;
+  font-size: 0.9375rem !important;
+  font-family: inherit !important;
+}
+
+/* Success — светло-зелёный */
+.app-toast-success {
+  background: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+}
+
+.app-toast-success [data-title] {
+  color: #15803d !important;
+}
+
+.app-toast-success [data-description] {
+  color: #166534 !important;
+}
+
+/* Error — светло-красный */
+.app-toast-error {
+  background: #fef2f2 !important;
+  border-color: #fecaca !important;
+}
+
+.app-toast-error [data-title] {
+  color: #b91c1c !important;
+}
+
+.app-toast-error [data-description] {
+  color: #991b1b !important;
+}
+
+/* Крестик справа */
+.app-toast-close {
+  left: auto !important;
+  right: 0 !important;
+  transform: translate(35%, -35%) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8e8e8 !important;
+  color: #737373 !important;
+}
+
+.app-toast-close:hover {
+  color: #111111 !important;
+  border-color: #d4d4d4 !important;
+}

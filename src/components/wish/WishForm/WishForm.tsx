@@ -33,7 +33,7 @@ export const WishForm = ({ formAction, formState, isPending, submitBtnText }: Wi
           name="description"
           id="descField"
           cols={30}
-          rows={10}
+          rows={5}
         ></textarea>
       </div>
 

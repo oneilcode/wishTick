@@ -120,7 +120,6 @@
 .checkbox:checked + .checkboxCustom::after {
   content: "";
   position: absolute;
-  top: 2px;
   left: 6px;
   width: 5px;
   height: 10px;
@@ -132,13 +131,5 @@
 .statusText {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #737373;
-}
-
-.done {
-  color: #15803d;
-}
-
-.undone {
   color: #737373;
 }

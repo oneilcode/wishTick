@@ -1,0 +1,24 @@
+.toastSuccess {
+  background: rgb(255, 251, 231) !important;
+  color: rgb(58, 68, 61) !important;
+}
+
+.toastError {
+  background: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #b91c1c !important;
+}
+
+.closeButton {
+  left: auto !important;
+  right: 0 !important;
+  transform: translate(35%, -35%) !important;
+  background: rgb(247, 239, 239) !important;
+  border: 1px solid #e8e8e8 !important;
+  color: #737373 !important;
+}
+
+.closeButton:hover {
+  color: #111111 !important;
+  border-color: #d4d4d4 !important;
+}

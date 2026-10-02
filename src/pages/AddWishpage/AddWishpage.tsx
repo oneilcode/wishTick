@@ -1,5 +1,5 @@
 import { useActionState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import cls from "./AddWishpage.module.css";
 import { Loader } from "@/components/ui/Loader";
@@ -38,6 +38,8 @@ const createCardAction = async (
 
 export const AddWishpage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const prefillImg = (location.state as { prefillImg?: string } | null)?.prefillImg ?? "";
 
   const [formState, formAction, isPending] = useActionState(createCardAction, {});
 
@@ -65,7 +67,7 @@ export const AddWishpage = () => {
       <WishForm
         formAction={formAction}
         isPending={isPending}
-        formState={formState}
+        formState={{ ...formState, img: formState.img || prefillImg }}
         submitBtnText="Добавить желание"
       />
     </>

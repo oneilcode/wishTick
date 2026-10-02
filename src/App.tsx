@@ -9,13 +9,12 @@ import { EditWishPage } from "./pages/EditWishPage";
 import { AuthProvider } from "./auth/AuthProvider";
 import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
-
 import { MyWishesPage } from "./pages/MyWishesPage";
 import { VerifyEmailPage } from "./pages/VerifyEmailPage";
-import { Toaster } from "sonner";
 import { PublicOnlyRoute } from "./components/auth/PublicOnlyRoute";
 import { RootRedirect } from "./components/auth/RootRedirect";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import { AppToaster } from "./components/ui/AppToaster/AppToaster";
 
 function App() {
   return (
@@ -46,7 +45,7 @@ function App() {
           </Route>
         </Routes>
       </AuthProvider>
-      <Toaster position="top-right" richColors closeButton />
+      <AppToaster />
     </BrowserRouter>
   );
 }
