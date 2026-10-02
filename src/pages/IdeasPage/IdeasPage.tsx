@@ -90,13 +90,11 @@ export const IdeasPage = () => {
                 onError={() => setLoadedImages((prev) => new Set(prev).add(picture.id))}
               />
 
-              {/* Overlay при hover (desktop) */}
               <div className={cls.overlay}>
                 <span className={cls.overlayIcon}>+</span>
                 <span className={cls.overlayText}>Добавить в желания</span>
               </div>
 
-              {/* Иконка «+» всегда видна (mobile) */}
               <span className={cls.mobilePlus} aria-hidden="true">
                 +
               </span>

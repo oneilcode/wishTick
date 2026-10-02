@@ -1,18 +1,13 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import cls from "./MyWishesPage.module.css";
 import { Loader } from "@/components/ui/Loader";
-import { SearchInput } from "@/components/ui/SearchInput";
 import { WishCardList } from "@/components/wish/WishCardList";
-import { SelectWishCards } from "@/components/ui/SelectWishCards";
-import { Button } from "@/components/ui/Button";
 import { getWishes } from "@/api/wishes";
 import type { Wish } from "@/types/wish";
 import { EmptyWishesState } from "@/components/wish/EmptyWishesState";
+import { WishToolbar } from "@/components/wish/WishToolbar";
 
 export const MyWishesPage = () => {
-  const navigate = useNavigate();
-
   const [searchValue, setSearchValue] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -63,19 +58,12 @@ export const MyWishesPage = () => {
 
   return (
     <>
-      <div className={cls.searchWrapper}>
-        <div>
-          <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
-        </div>
-
-        <div>
-          <SelectWishCards value={sortValue} onChange={onSortChangeHandler} />
-        </div>
-
-        <div>
-          <Button onClick={() => navigate("/addwish")}>Добавить</Button>
-        </div>
-      </div>
+      <WishToolbar
+        searchValue={searchValue}
+        onSearchChange={onSearchChangeHandler}
+        sortValue={sortValue}
+        onSortChange={onSortChangeHandler}
+      />
 
       {cards.length === 0 && (
         <p className={cls.notFound}>Ничего не найдено по запросу «{searchValue}»</p>
