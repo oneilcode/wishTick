@@ -1,0 +1,17 @@
+.wrapper {
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 0 1 400px;
+}
+
+.select,
+.action {
+  flex-shrink: 0;
+}
