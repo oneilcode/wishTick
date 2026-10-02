@@ -10,8 +10,8 @@ export const SelectWishCards = ({ value, onChange }: SelectWishCardsProps) => {
   return (
     <select className={cls.select} value={value} onChange={onChange}>
       <option value="">Сортировать</option>
-      <option value="asc">Исполнилось</option>
-      <option value="desc">Жду</option>
+      <option value="desc">Исполнилось</option>
+      <option value="asc">Жду</option>
     </select>
   );
 };

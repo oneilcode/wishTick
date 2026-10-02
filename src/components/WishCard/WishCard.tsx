@@ -45,6 +45,8 @@ export const WishCard = ({ card, onDelete, onUpdate }: WishCardProps) => {
   };
 
   const onCheckboxChangeHandler = async () => {
+    const wasCompleted = card.completed;
+
     const { data, error } = await updateWish(card.id, { completed: !card.completed });
 
     if (error) {
@@ -54,11 +56,18 @@ export const WishCard = ({ card, onDelete, onUpdate }: WishCardProps) => {
 
     if (data) {
       onUpdate(data);
+
+      if (!wasCompleted && data.completed) {
+        toast.success("Желание исполнилось! 🎉", {
+          description: "Одно из твоих желаний сбылось - так держать!",
+          duration: 4000,
+        });
+      }
     }
   };
 
   return (
-    <div className={cls.card}>
+    <div className={`${cls.card} ${card.completed ? cls.cardDone : ""}`}>
       <label className={cls.statusWrapper}>
         <input
           type="checkbox"

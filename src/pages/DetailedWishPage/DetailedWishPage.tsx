@@ -69,6 +69,8 @@ export const DetailedWishPage = () => {
   const onCheckboxChangeHandler = async () => {
     if (!id || !card) return;
 
+    const wasCompleted = card.completed;
+
     const { data, error } = await updateWish(id, { completed: !card.completed });
 
     if (error) {
@@ -78,6 +80,13 @@ export const DetailedWishPage = () => {
 
     if (data) {
       setCard(data);
+
+      if (!wasCompleted && data.completed) {
+        toast.success("Желание исполнилось! 🎉", {
+          description: "Одно из твоих желаний сбылось - так держать!",
+          duration: 4000,
+        });
+      }
     }
   };
 
@@ -86,21 +95,22 @@ export const DetailedWishPage = () => {
 
   return (
     <div className={cls.cardContainer}>
-      <div className={cls.card}>
+      <div className={`${cls.card} ${card.completed ? cls.cardDone : ""}`}>
         <div className={cls.cardBtnWrapper}>
           <Button className={cls.cardEdit} onClick={() => navigate("/mywishes")}>
             Назад
           </Button>
-          <label className={cls.cardStatus}>
+
+          <label className={cls.statusWrapper}>
             <input
               type="checkbox"
               checked={card.completed}
               onChange={onCheckboxChangeHandler}
-              className={cls.hiddenCheckbox}
+              className={cls.checkbox}
             />
-            Изменить статус{" "}
-            <span className={`${cls.cardLabel} ${card.completed ? cls.done : cls.undone}`}>
-              {card.completed ? "исполнилось :)" : "жду :|"}
+            <span className={cls.checkboxCustom} aria-hidden="true" />
+            <span className={`${cls.statusText} ${card.completed ? cls.done : cls.undone}`}>
+              {card.completed ? "Исполнено" : "Отметить исполненным"}
             </span>
           </label>
         </div>
@@ -114,6 +124,7 @@ export const DetailedWishPage = () => {
           alt={card.wish}
           loading="lazy"
         />
+
         <div className={cls.cardBtnWrapper}>
           <p>Дата создания/последнего редактирования: {formatDate(card.editDate)}</p>
           <div className={cls.cardButtons}>

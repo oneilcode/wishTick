@@ -26,7 +26,7 @@ export const SignUpPage = () => {
       return;
     }
 
-    navigate("/mywishes");
+    navigate("/verify-email", { state: { email } });
   };
 
   return (
