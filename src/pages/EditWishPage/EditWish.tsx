@@ -1,7 +1,7 @@
 import { useActionState, useEffect } from "react";
 import cls from "./EditWishPage.module.css";
-import { Loader } from "@/components/Loader";
-import { WishForm } from "@/components/WishForm";
+import { Loader } from "@/components/ui/Loader";
+import { WishForm } from "@/components/wish/WishForm";
 import { updateWish } from "@/api/wishes";
 import type { Wish, WishFormState } from "@/types/wish";
 import { useNavigate } from "react-router-dom";

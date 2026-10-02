@@ -1,4 +1,4 @@
-import { MainLayout } from "./components/MainLayout/MainLayout";
+import { MainLayout } from "./components/layout/MainLayout/MainLayout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -9,12 +9,13 @@ import { EditWishPage } from "./pages/EditWishPage";
 import { AuthProvider } from "./auth/AuthProvider";
 import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+
 import { MyWishesPage } from "./pages/MyWishesPage";
 import { VerifyEmailPage } from "./pages/VerifyEmailPage";
 import { Toaster } from "sonner";
-import { PublicOnlyRoute } from "./components/PublicOnlyRoute";
-import { RootRedirect } from "./components/RootRedirect";
+import { PublicOnlyRoute } from "./components/auth/PublicOnlyRoute";
+import { RootRedirect } from "./components/auth/RootRedirect";
+import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 
 function App() {
   return (

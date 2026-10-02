@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Button } from "../Button/Button";
+import { Button } from "../../ui/Button/Button";
 import cls from "./WishCard.module.css";
 import { deleteWish, updateWish } from "@/api/wishes";
 import type { Wish } from "@/types/wish";

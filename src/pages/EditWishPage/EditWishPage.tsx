@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Loader } from "@/components/Loader";
+import { Loader } from "@/components/ui/Loader";
 import { useParams } from "react-router-dom";
 import { EditWish } from "./EditWish";
 import { useFetch } from "@/hooks/useFetch";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import cls from "./IdeasPage.module.css";
-import { Button } from "@/components/Button";
-import { Loader } from "@/components/Loader";
+import { Button } from "@/components/ui/Button";
+import { Loader } from "@/components/ui/Loader";
 import type { UnsplashPicture } from "@/types/unsplash";
 
 export const IdeasPage = () => {
