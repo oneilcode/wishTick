@@ -1,10 +1,10 @@
 import { useEffect, useState, type ChangeEvent } from "react";
 import cls from "./MyWishesPage.module.css";
-import { Loader } from "@/components/Loader";
-import { SearchInput } from "@/components/SearchInput";
-import { WishCardList } from "@/components/WishCardList";
-import { SelectWishCards } from "@/components/SelectWishCards";
-import { Button } from "@/components/Button";
+import { Loader } from "@/components/ui/Loader";
+import { SearchInput } from "@/components/ui/SearchInput";
+import { WishCardList } from "@/components/wish/WishCardList";
+import { SelectWishCards } from "@/components/ui/SelectWishCards";
+import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { getWishes } from "@/api/wishes";
 import type { Wish } from "@/types/wish";

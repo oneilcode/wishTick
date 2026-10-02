@@ -1,5 +1,5 @@
 import type { WishFormState } from "@/types/wish";
-import { Button } from "../Button";
+import { Button } from "../../ui/Button";
 import cls from "./WishForm.module.css";
 
 interface WishFormProps {
