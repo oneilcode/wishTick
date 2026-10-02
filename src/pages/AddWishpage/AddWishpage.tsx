@@ -39,7 +39,9 @@ const createCardAction = async (
 export const AddWishpage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const prefillImg = (location.state as { prefillImg?: string } | null)?.prefillImg ?? "";
+  const prefillWish = (location.state as { prefillWish?: string } | null)?.prefillWish ?? "";
 
   const [formState, formAction, isPending] = useActionState(createCardAction, {});
 
@@ -67,7 +69,11 @@ export const AddWishpage = () => {
       <WishForm
         formAction={formAction}
         isPending={isPending}
-        formState={{ ...formState, img: formState.img || prefillImg }}
+        formState={{
+          ...formState,
+          img: formState.img || prefillImg,
+          wish: formState.wish || prefillWish,
+        }}
         submitBtnText="Добавить желание"
       />
     </>

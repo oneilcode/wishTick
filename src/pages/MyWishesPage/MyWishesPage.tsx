@@ -1,17 +1,13 @@
 import { useEffect, useState, type ChangeEvent } from "react";
 import cls from "./MyWishesPage.module.css";
 import { Loader } from "@/components/ui/Loader";
-import { SearchInput } from "@/components/ui/SearchInput";
 import { WishCardList } from "@/components/wish/WishCardList";
-import { SelectWishCards } from "@/components/ui/SelectWishCards";
-import { Button } from "@/components/ui/Button";
-import { useNavigate } from "react-router-dom";
 import { getWishes } from "@/api/wishes";
 import type { Wish } from "@/types/wish";
+import { EmptyWishesState } from "@/components/wish/EmptyWishesState";
+import { WishToolbar } from "@/components/wish/WishToolbar";
 
 export const MyWishesPage = () => {
-  const navigate = useNavigate();
-
   const [searchValue, setSearchValue] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -54,24 +50,28 @@ export const MyWishesPage = () => {
     setWishes((prev) => prev.map((wish) => (wish.id === updatedCard.id ? updatedCard : wish)));
   };
 
+  if (isLoading) return <Loader />;
+
+  if (wishes.length === 0) {
+    return <EmptyWishesState />;
+  }
+
   return (
     <>
-      {isLoading && <Loader />}
-      <div className={cls.searchWrapper}>
-        <div>
-          <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
-        </div>
+      <WishToolbar
+        searchValue={searchValue}
+        onSearchChange={onSearchChangeHandler}
+        sortValue={sortValue}
+        onSortChange={onSortChangeHandler}
+      />
 
-        <div>
-          <SelectWishCards value={sortValue} onChange={onSortChangeHandler} />
-        </div>
+      {cards.length === 0 && (
+        <p className={cls.notFound}>Ничего не найдено по запросу «{searchValue}»</p>
+      )}
 
-        <div>
-          <Button onClick={() => navigate("/addwish")}>Добавить</Button>
-        </div>
-      </div>
-      {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
-      <WishCardList cards={cards} onDelete={onDeleteHandler} onUpdate={onUpdateHandler} />.
+      {cards.length > 0 && (
+        <WishCardList cards={cards} onDelete={onDeleteHandler} onUpdate={onUpdateHandler} />
+      )}
     </>
   );
 };

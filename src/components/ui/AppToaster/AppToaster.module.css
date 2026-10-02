@@ -13,9 +13,6 @@
   left: auto !important;
   right: 0 !important;
   transform: translate(35%, -35%) !important;
-  background: rgb(247, 239, 239) !important;
-  border: 1px solid #e8e8e8 !important;
-  color: #737373 !important;
 }
 
 .closeButton:hover {

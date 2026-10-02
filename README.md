@@ -1,21 +1,71 @@
-# WishTick
+# ✨ WishTick
 
-WishTick helps you easily make wishes, track their fulfillment and get inspired by your achievements
-<!-- WishTick нужен, чтобы легко загадывать желания, отслеживать их исполнение и вдохновляться своими достижениями -->
+> Your digital wish journal that helps dreams come true.
 
-Before start project run this command in terminal: npm install
-<!-- Перед стартом проекта запусти следующую команду в терминале: npm install -->
+**WishTick** is a web app for recording and tracking your wishes. Write down your dreams, mark them as fulfilled, and stay inspired by your own progress.
 
-To run project use command: npm run dev
-<!-- Чтобы запустить проект, используй команду: npm run dev -->
+🔗 **Live Demo:** [wish-tick.vercel.app](https://wishtick.onrender.com/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 About
 
-## Expanding the ESLint configuration
+In the fast pace of modern life, it's easy to lose sight of your dreams and goals. WishTick makes sure that doesn't happen:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Write down** — from small joys to big life goals
+- **Track** — what's done and what's still in progress
+- **Get inspired** — by your own achievements and progress
+
+---
+
+## ✨ Features
+
+### Wishes
+- ➕ Create wishes with title, description and image
+- ✏️ Edit existing wishes
+- 🗑️ Delete with confirmation toast
+- ✅ Mark as "fulfilled" with green card highlight
+- 🔍 Search by title
+- 🔃 Sort by status
+
+### Authentication
+- 📝 Sign up with email confirmation
+- 🔐 Sign in / sign out
+- 🛡️ Protected routes
+- ✉️ Dedicated "Verify your email" page
+
+### Inspiration
+- 🖼️ Random images from Unsplash
+- 🎯 Click on image → create wish with prefilled image
+- 🎨 Onboarding for new users with wish examples
+
+### UX
+- 🎉 Toasts for all actions (success / error)
+- ⏳ Loaders and skeletons
+- 📱 Responsive design
+- 🌟 Animated empty state
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| **Frontend** | React 19, TypeScript, Vite |
+| **Routing** | React Router v7 |
+| **State** | React Context, hooks |
+| **Styling** | CSS Modules |
+| **Animations** | Framer Motion, CSS animations |
+| **UI** | Sonner (toasts) |
+| **Backend** | Supabase (auth + Postgres) |
+| **External API** | Unsplash API |
+| **Tooling** | ESLint, Prettier, TypeScript strict |
+
+---
+
+<div align="center">
+
+**WishTick: Your dreams — under control!** ✨
+
+</div>
