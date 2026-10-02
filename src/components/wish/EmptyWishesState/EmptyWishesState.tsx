@@ -21,7 +21,7 @@ export const EmptyWishesState = () => {
       left: Math.random() * 100,
       size: 6 + Math.random() * 8,
       delay: Math.random() * 5,
-      duration: 4 + Math.random() * 5, // 4-9s — медленнее
+      duration: 4 + Math.random() * 5,
     }));
   }, []);
 
