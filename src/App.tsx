@@ -23,16 +23,14 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<RootRedirect />} />
-
             <Route path="/about" element={<HomePage />} />
+            <Route path="/ideas" element={<IdeasPage />} />
 
             <Route element={<PublicOnlyRoute />}>
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/verify-email" element={<VerifyEmailPage />} />
             </Route>
-
-            <Route path="/ideas" element={<IdeasPage />} />
 
             <Route element={<ProtectedRoute />}>
               <Route path="/mywishes" element={<MyWishesPage />} />
