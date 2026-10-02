@@ -1,13 +1,14 @@
 import { useEffect, useState, type ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import cls from "./MyWishesPage.module.css";
 import { Loader } from "@/components/ui/Loader";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { WishCardList } from "@/components/wish/WishCardList";
 import { SelectWishCards } from "@/components/ui/SelectWishCards";
 import { Button } from "@/components/ui/Button";
-import { useNavigate } from "react-router-dom";
 import { getWishes } from "@/api/wishes";
 import type { Wish } from "@/types/wish";
+import { EmptyWishesState } from "@/components/wish/EmptyWishesState";
 
 export const MyWishesPage = () => {
   const navigate = useNavigate();
@@ -54,9 +55,14 @@ export const MyWishesPage = () => {
     setWishes((prev) => prev.map((wish) => (wish.id === updatedCard.id ? updatedCard : wish)));
   };
 
+  if (isLoading) return <Loader />;
+
+  if (wishes.length === 0) {
+    return <EmptyWishesState />;
+  }
+
   return (
     <>
-      {isLoading && <Loader />}
       <div className={cls.searchWrapper}>
         <div>
           <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
@@ -70,8 +76,14 @@ export const MyWishesPage = () => {
           <Button onClick={() => navigate("/addwish")}>Добавить</Button>
         </div>
       </div>
-      {cards.length === 0 && <p className={cls.searchNoElements}>Нет элементов...</p>}
-      <WishCardList cards={cards} onDelete={onDeleteHandler} onUpdate={onUpdateHandler} />.
+
+      {cards.length === 0 && (
+        <p className={cls.notFound}>Ничего не найдено по запросу «{searchValue}»</p>
+      )}
+
+      {cards.length > 0 && (
+        <WishCardList cards={cards} onDelete={onDeleteHandler} onUpdate={onUpdateHandler} />
+      )}
     </>
   );
 };

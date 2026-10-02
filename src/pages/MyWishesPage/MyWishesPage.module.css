@@ -11,3 +11,18 @@
 .searchNoElements {
   margin-top: 20px;
 }
+
+.notFound {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #737373;
+  font-size: 0.9375rem;
+}
+
+.notFound::before {
+  content: "🔍";
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.5;
+}
