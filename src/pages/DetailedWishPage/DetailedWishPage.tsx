@@ -95,12 +95,12 @@ export const DetailedWishPage = () => {
 
   return (
     <div className={cls.cardContainer}>
+      <button type="button" className={cls.backButton} onClick={() => navigate("/mywishes")}>
+        ← Назад
+      </button>
+
       <div className={`${cls.card} ${card.completed ? cls.cardDone : ""}`}>
         <div className={cls.cardBtnWrapper}>
-          <Button className={cls.cardEdit} onClick={() => navigate("/mywishes")}>
-            Назад
-          </Button>
-
           <label className={cls.statusWrapper}>
             <input
               type="checkbox"
