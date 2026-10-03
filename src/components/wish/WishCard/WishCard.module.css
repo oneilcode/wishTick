@@ -50,9 +50,17 @@
 }
 
 .cardTitle {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #111111;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.7em;
 }
 
 .cardImage {
@@ -83,7 +91,6 @@
   align-items: center;
   gap: 0.625rem;
   padding-bottom: 1rem;
-  margin-bottom: 1rem;
   border-bottom: 1px solid #f0f0f0;
   cursor: pointer;
   user-select: none;
