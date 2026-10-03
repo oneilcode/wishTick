@@ -1,0 +1,1 @@
+export { WishProgress } from "./WishProgress";

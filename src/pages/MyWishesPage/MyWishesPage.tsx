@@ -6,6 +6,7 @@ import { getWishes } from "@/api/wishes";
 import type { Wish } from "@/types/wish";
 import { EmptyWishesState } from "@/components/wish/EmptyWishesState";
 import { WishToolbar } from "@/components/wish/WishToolbar";
+import { WishProgress } from "@/components/wish/WishProgress";
 
 export const MyWishesPage = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -56,14 +57,21 @@ export const MyWishesPage = () => {
     return <EmptyWishesState />;
   }
 
+  const total = wishes.length;
+  const completed = wishes.filter((w) => w.completed).length;
+
   return (
     <>
-      <WishToolbar
-        searchValue={searchValue}
-        onSearchChange={onSearchChangeHandler}
-        sortValue={sortValue}
-        onSortChange={onSortChangeHandler}
-      />
+      <div className={cls.toolbarBlock}>
+        <WishToolbar
+          searchValue={searchValue}
+          onSearchChange={onSearchChangeHandler}
+          sortValue={sortValue}
+          onSortChange={onSortChangeHandler}
+        />
+
+        <WishProgress total={total} completed={completed} />
+      </div>
 
       {cards.length === 0 && (
         <p className={cls.notFound}>Ничего не найдено по запросу «{searchValue}»</p>
