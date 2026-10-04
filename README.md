@@ -6,7 +6,7 @@
 
 🔗 **Live Demo:** [wish-tick.vercel.app](https://wishtick.onrender.com/)
 
-
+![WishTick Preview](./public/preview.jpg)
 ---
 
 ## 📖 About
