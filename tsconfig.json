@@ -15,7 +15,7 @@
     "jsx": "react-jsx",
 
     /* Строгие проверки (можно временно отключить strict: false для плавной миграции) */
-    "strict": false,
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

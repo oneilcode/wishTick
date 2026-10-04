@@ -6,6 +6,7 @@ import { Loader } from "@/components/ui/Loader";
 import { WishForm } from "@/components/wish/WishForm";
 import { createWish } from "@/api/wishes";
 import type { WishFormState } from "@/types/wish";
+import type { AddWishLocationState } from "@/types/navigation";
 
 const createCardAction = async (
   _prevState: WishFormState,
@@ -40,10 +41,14 @@ export const AddWishpage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const prefillImg = (location.state as { prefillImg?: string } | null)?.prefillImg ?? "";
-  const prefillWish = (location.state as { prefillWish?: string } | null)?.prefillWish ?? "";
+  const state = location.state as AddWishLocationState | null;
+  const prefillImg = state?.prefillImg ?? "";
+  const prefillWish = state?.prefillWish ?? "";
 
-  const [formState, formAction, isPending] = useActionState(createCardAction, {});
+  const [formState, formAction, isPending] = useActionState(createCardAction, {
+    img: prefillImg,
+    wish: prefillWish,
+  });
 
   const isRedirecting = formState.success === true;
 
@@ -69,11 +74,7 @@ export const AddWishpage = () => {
       <WishForm
         formAction={formAction}
         isPending={isPending}
-        formState={{
-          ...formState,
-          img: formState.img || prefillImg,
-          wish: formState.wish || prefillWish,
-        }}
+        formState={formState}
         submitBtnText="Добавить желание"
       />
     </>

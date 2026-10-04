@@ -1,8 +1,7 @@
-import { useState, type SyntheticEvent, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signUp } from "@/auth/authApi";
-import { Button } from "@/components/ui/Button";
-import cls from "./SignUpPage.module.css";
+import { AuthForm } from "@/components/ui/AuthForm";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -12,14 +11,27 @@ export const SignUpPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmitHandler = async (e: SyntheticEvent<HTMLFormElement>) => {
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setIsLoading(true);
 
-    const signUpError = await signUp(email, password);
+    const { error: signUpError, alreadyExists } = await signUp(email.trim(), password);
 
     setIsLoading(false);
+
+    if (alreadyExists) {
+      setError("Этот email уже зарегистрирован. Войдите или восстановите пароль.");
+      return;
+    }
 
     if (signUpError) {
       setError(signUpError.message);
@@ -30,43 +42,22 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className={cls.page}>
-      <form className={cls.form} onSubmit={onSubmitHandler}>
-        <h2 className={cls.title}>Регистрация</h2>
-
-        <div className={cls.formControl}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className={cls.formControl}>
-          <label htmlFor="password">Пароль</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-            required
-            minLength={6}
-          />
-        </div>
-
-        {error && <p className={cls.error}>{error}</p>}
-
-        <Button isDisabled={isLoading}>
-          {isLoading ? "Регистрация..." : "Зарегистрироваться"}
-        </Button>
-
-        <p>
+    <AuthForm
+      title="Регистрация"
+      email={email}
+      password={password}
+      error={error}
+      isLoading={isLoading}
+      submitText="Зарегистрироваться"
+      loadingText="Регистрация..."
+      onEmailChange={handleEmailChange}
+      onPasswordChange={handlePasswordChange}
+      onSubmit={handleSubmit}
+      footer={
+        <>
           Уже есть аккаунт? <Link to="/signin">Войти</Link>
-        </p>
-      </form>
-    </div>
+        </>
+      }
+    />
   );
 };
