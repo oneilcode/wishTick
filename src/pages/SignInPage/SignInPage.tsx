@@ -1,8 +1,7 @@
-import { useState, type SyntheticEvent, type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signIn } from "@/auth/authApi";
-import { Button } from "@/components/ui/Button";
-import cls from "./SignInPage.module.css";
+import { AuthForm } from "@/components/ui/AuthForm";
 
 export const SignInPage = () => {
   const navigate = useNavigate();
@@ -12,12 +11,20 @@ export const SignInPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmitHandler = async (e: SyntheticEvent<HTMLFormElement>) => {
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setIsLoading(true);
 
-    const signInError = await signIn(email, password);
+    const signInError = await signIn(email.trim(), password);
 
     setIsLoading(false);
 
@@ -30,40 +37,22 @@ export const SignInPage = () => {
   };
 
   return (
-    <div className={cls.page}>
-      <form className={cls.form} onSubmit={onSubmitHandler}>
-        <h2 className={cls.title}>Вход</h2>
-
-        <div className={cls.formControl}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className={cls.formControl}>
-          <label htmlFor="password">Пароль</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        {error && <p className={cls.error}>{error}</p>}
-
-        <Button isDisabled={isLoading}>{isLoading ? "Вход..." : "Войти"}</Button>
-
-        <p>
+    <AuthForm
+      title="Вход"
+      email={email}
+      password={password}
+      error={error}
+      isLoading={isLoading}
+      submitText="Войти"
+      loadingText="Вход..."
+      onEmailChange={handleEmailChange}
+      onPasswordChange={handlePasswordChange}
+      onSubmit={handleSubmit}
+      footer={
+        <>
           Нет аккаунта? <Link to="/signup">Зарегистрироваться</Link>
-        </p>
-      </form>
-    </div>
+        </>
+      }
+    />
   );
 };
