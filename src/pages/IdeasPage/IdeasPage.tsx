@@ -5,8 +5,10 @@ import cls from "./IdeasPage.module.css";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 import type { UnsplashPicture } from "@/types/unsplash";
+import type { AddWishLocationState } from "@/types/navigation";
 
 const COUNT = 24;
+const UNSPLASH_API = "https://api.unsplash.com";
 
 export const IdeasPage = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ export const IdeasPage = () => {
       setLoading(true);
       setLoadedImages(new Set());
 
-      const response = await fetch(`https://api.unsplash.com/photos/random?count=${COUNT}`, {
+      const response = await fetch(`${UNSPLASH_API}/photos/random?count=${COUNT}`, {
         headers: {
           Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_KEY}`,
         },
@@ -49,9 +51,8 @@ export const IdeasPage = () => {
   };
 
   const onPictureClick = (picture: UnsplashPicture) => {
-    navigate("/addwish", {
-      state: { prefillImg: picture.urls.regular },
-    });
+    const state: AddWishLocationState = { prefillImg: picture.urls?.regular ?? "" };
+    navigate("/addwish", { state });
   };
 
   return (
