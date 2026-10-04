@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import cls from "./VerifyEmailPage.module.css";
+import type { VerifyEmailLocationState } from "@/types/navigation";
 
 export const VerifyEmailPage = () => {
   const location = useLocation();
-  const email = (location.state as { email?: string } | null)?.email;
+  const state = location.state as VerifyEmailLocationState | null;
+  const email = state?.email;
 
   return (
     <div className={cls.page}>
