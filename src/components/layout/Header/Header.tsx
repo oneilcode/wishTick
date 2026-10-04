@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import cls from "./Header.module.css";
 import { useAuth } from "@/auth/useAuth";
 import { signOut } from "@/auth/authApi";
@@ -9,9 +8,8 @@ export const Header = () => {
   const { user } = useAuth();
 
   const onSignOutHandler = async () => {
-    navigate("/about", { replace: true });
     await signOut();
-    toast.success("Вы вышли из аккаунта");
+    navigate("/about", { replace: true });
   };
 
   return (
