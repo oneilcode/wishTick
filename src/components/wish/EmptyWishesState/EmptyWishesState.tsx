@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import cls from "./EmptyWishesState.module.css";
 
@@ -12,18 +11,16 @@ type Star = {
   duration: number;
 };
 
+const STARS: Star[] = Array.from({ length: STAR_COUNT }).map(() => ({
+  top: Math.random() * 100,
+  left: Math.random() * 100,
+  size: 6 + Math.random() * 8,
+  delay: Math.random() * 5,
+  duration: 4 + Math.random() * 5,
+}));
+
 export const EmptyWishesState = () => {
   const navigate = useNavigate();
-
-  const stars = useMemo<Star[]>(() => {
-    return Array.from({ length: STAR_COUNT }).map(() => ({
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-      size: 6 + Math.random() * 8,
-      delay: Math.random() * 5,
-      duration: 4 + Math.random() * 5,
-    }));
-  }, []);
 
   return (
     <div className={cls.wrapper}>
@@ -31,16 +28,16 @@ export const EmptyWishesState = () => {
       <div className={cls.blob2} aria-hidden="true" />
 
       <div className={cls.stars} aria-hidden="true">
-        {stars.map((s, i) => (
+        {STARS.map((star, index) => (
           <span
-            key={i}
+            key={index}
             className={cls.star}
             style={{
-              top: `${s.top}%`,
-              left: `${s.left}%`,
-              fontSize: `${s.size}px`,
-              animationDelay: `${s.delay}s`,
-              animationDuration: `${s.duration}s`,
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              fontSize: `${star.size}px`,
+              animationDelay: `${star.delay}s`,
+              animationDuration: `${star.duration}s`,
             }}
           >
             ✦
