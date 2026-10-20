@@ -29,6 +29,12 @@ In the fast pace of modern life, it's easy to lose sight of your dreams and goal
 - 🔍 Search by title
 - 🔃 Sort by status
 
+### AI Assistant
+- ✨ **AI-powered wish suggestions** — enter keywords, get a well-formulated wish
+- 🤖 Powered by **Groq API** (`openai/gpt-oss-120b` model)
+- 📝 Auto-fills title and description
+- 🌐 Works in Russian, generates structured JSON responses
+
 ### Authentication
 - 📝 Sign up with email confirmation
 - 🔐 Sign in / sign out
@@ -46,6 +52,11 @@ In the fast pace of modern life, it's easy to lose sight of your dreams and goal
 - 📱 Responsive design
 - 🌟 Animated empty state
 
+### Performance
+- ⚡ **Code splitting** via `React.lazy` - heavy pages loaded on demand
+- 📦 **Vendor chunks** separated (`react`, `supabase`, `router`) - cached on updates
+- 🎨 **Lazy loading** for images
+
 ---
 
 ## 🛠 Tech Stack
@@ -61,6 +72,7 @@ In the fast pace of modern life, it's easy to lose sight of your dreams and goal
 | **Backend** | Supabase (auth + Postgres) |
 | **External API** | Unsplash API |
 | **Tooling** | ESLint, Prettier, TypeScript strict |
+| **AI** | Groq API (`openai/gpt-oss-120b`) |
 
 ---
 
