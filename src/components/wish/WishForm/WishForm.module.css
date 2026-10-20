@@ -1,4 +1,3 @@
-/* ============ FORM CONTAINER ============ */
 .formContainer {
   max-width: 600px;
   margin: 0 auto;
@@ -8,7 +7,6 @@
   gap: 1.5rem;
 }
 
-/* ============ FORM CONTROL ============ */
 .formControl {
   display: flex;
   flex-direction: column;
@@ -51,4 +49,66 @@
   .formContainer {
     padding: 1.5rem 1rem;
   }
+}
+
+/* ============ AI BLOCK ============ */
+.aiBlock {
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #f0fdf4, #fefce8);
+  border: 1px solid #d1fae5;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.aiLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #15803d;
+}
+
+.aiHint {
+  font-size: 0.8125rem;
+  color: #737373;
+  margin: 0;
+}
+
+.aiRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.aiInput {
+  flex: 1;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  outline: none;
+}
+
+.aiInput:focus {
+  border-color: #15803d;
+}
+
+.aiButton {
+  padding: 0.625rem 1rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #15803d;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.aiButton:hover {
+  opacity: 0.9;
 }

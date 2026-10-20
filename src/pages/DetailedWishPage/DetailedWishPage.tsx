@@ -7,7 +7,7 @@ import { Loader } from "@/components/ui/Loader";
 import { getWishById, deleteWish, updateWish } from "@/api/wishes";
 import type { Wish } from "@/types/wish";
 import { formatDate } from "@/utils/formatDate";
-import { DEFAULT_WISH_IMAGE } from "@/constants/defaultWishImage";
+import { DEFAULT_WISH_IMAGE } from "@/constants/wishPage";
 
 export const DetailedWishPage = () => {
   const navigate = useNavigate();
